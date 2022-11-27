@@ -21,7 +21,7 @@ function linkAction(){
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+/*==================== Scroll de links ativos ====================*/
 const sections = document.querySelectorAll('section[id]')
 
 function scrollActive(){
