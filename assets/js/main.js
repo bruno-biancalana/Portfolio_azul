@@ -63,6 +63,17 @@ sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
     // Envie um evento personalizado para o Google Analytics
     gtag('event', 'clique_em_botao', {
       'event_category': 'interacao',
-      'event_label': 'botao_clicado'
+      'event_label': 'clique_linkedin'
+    });
+  });
+
+  var btnForm = document.getElementById('btn_formulario');
+
+  // Adicione um ouvinte de evento ao botão
+  meuBotao.addEventListener('click', function() {
+    // Envie um evento personalizado para o Google Analytics
+    gtag('event', 'clique_em_botao', {
+      'event_category': 'interacao',
+      'event_label': 'envio_formulario'
     });
   });
