@@ -56,24 +56,4 @@ sr.reveal('.home__social-icon',{ interval: 200});
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
 
 
-  var linkedin = document.getElementById('linkedin');
 
-  // Adicione um ouvinte de evento ao botão
-  meuBotao.addEventListener('click', function() {
-    // Envie um evento personalizado para o Google Analytics
-    gtag('event', 'clique_em_botao', {
-      'event_category': 'interacao',
-      'event_label': 'clique_linkedin'
-    });
-  });
-
-  var btnForm = document.getElementById('btn_formulario');
-
-  // Adicione um ouvinte de evento ao botão
-  meuBotao.addEventListener('click', function() {
-    // Envie um evento personalizado para o Google Analytics
-    gtag('event', 'clique_em_botao', {
-      'event_category': 'interacao',
-      'event_label': 'envio_formulario'
-    });
-  });
