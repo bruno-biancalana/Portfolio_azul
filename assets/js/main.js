@@ -55,5 +55,31 @@ sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
 
+/* Formulário responsivo */ 
+
+const formContainer = document.getElementById('form-container');
+const toggleButton = document.getElementById('toggle-button');
+const minimizeButton = document.getElementById('minimize-button');
+
+toggleButton.addEventListener('click', () => {
+    formContainer.classList.toggle('minimized');
+    if (formContainer.classList.contains('minimized')) {
+        toggleButton.innerText = '+';
+        minimizeButton.style.display = 'none';
+    } else {
+        toggleButton.innerText = '-';
+        minimizeButton.style.display = 'block'; // Exibe o botão de minimizar ao maximizar
+    }
+});
+
+minimizeButton.addEventListener('click', () => {
+    formContainer.classList.add('minimized');
+    toggleButton.innerText = '+';
+    minimizeButton.style.display = 'none'; // Oculta o botão de minimizar ao minimizar manualmente
+});
+/* Formulário responsivo */ 
+
+
+
 
 

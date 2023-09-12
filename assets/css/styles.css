@@ -528,3 +528,105 @@ img {
     width: 450px;
   }
 }
+
+
+/*formulário responsivo*/
+#form-container {
+  position: fixed;
+  bottom: 0;
+  right: 20px; /* Ajustado para a direita */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  max-height: 500px;
+  overflow: hidden;
+  width: 320px; /* Ajustado para um tamanho maior */
+}
+
+#form-container.minimized {
+  height: 60px; /* Ajustado para uma altura maior */
+}
+
+#form-content {
+  padding: 20px;
+  display: block; /* Exibe o conteúdo do formulário por padrão */
+}
+
+#submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: #0056b3;
+}
+
+#titulo_form {
+  margin: 0;
+  padding: 0;
+  transition: margin-top 0.3s ease; /* Adicionado para animar o título */
+  text-align: left; /* Alinhar o título à esquerda */
+  line-height: 60px; /* Centralizar verticalmente o título */
+  display: block; /* Certificar-se de que o título seja exibido como um bloco */
+}
+
+#form-container.minimized #titulo_form {
+  margin-top: 0; /* Zerar margem superior */
+  text-align: left; /* Alinhar o título à esquerda quando minimizado */
+  line-height: inherit; /* Restaurar a linha padrão altura para o título */
+  padding-bottom: 20px; 
+}
+
+button#toggle-button {
+  position: absolute;
+  top: 30px; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Move o botão para cima pela metade da sua altura */
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+button#minimize-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  display: none; /* Inicialmente oculto */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label, input, textarea, button {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+#content-above-form {
+  /* Estilos para o conteúdo acima do formulário */
+}
+/*formulário responsivo*/
