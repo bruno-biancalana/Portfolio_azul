@@ -84,8 +84,18 @@ No ar desde: 02 / 06 / 2022 -->
 			<!--===== ICONES DE REDES SOCIAIS =====-->
 			<div class="home__social">
 				<a href="https://www.linkedin.com/in/bruno-biancalana-a828b5182" target="_blank"
-					class="home__social-icon" data-gtm-action="click" data-gtm-category="home-pt:linkedin"
-					data-gtm-element="link" data-gtm-label="link:linkedin"><i class='bx bxl-linkedin'></i></a>
+					class="home__social-icon" id="linkedin-home"><i class='bx bxl-linkedin'></i></a>
+						
+						<script>
+  						document.getElementById('linkedin-home').addEventListener('click', function() {
+    					gtag('event', 'clique_em_meu_link', {
+      					'event_category': 'engajamento',
+      					'event_label': 'Meu Linkedin foi clicado'
+    					});
+  						});
+						</script>
+
+
 				<a href="https://github.com/bruno-biancalana" target="_blank" class="home__social-icon"><i
 						class='bx bxl-github'></i></a>
 				<a href="https://web.facebook.com/bruno.biancalana/" target="_blank" class="home__social-icon"><i
