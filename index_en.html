@@ -203,20 +203,41 @@
             </div>
         </section>
 
-        <!--===== CONTACT =====-->
-        <section class="contact section" id="contact">
+        <!--===== Formulário estático ===-->
+        <!-- <section class="contact section" id="contact">
             <h2 class="section-title">Contact</h2>
 
             <div class="contact__container bd-grid">
                 <form action="https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH" method="post"
-                    class="contact__form"> <!-- API SHEET MONKEY -->
+                    class="contact__form">  <!-- API SHEET MONKEY 
                     <input type="text" name="contact" placeholder="Nome" class="contact__input">
                     <input type="mail" name="email" placeholder="Email" class="contact__input">
                     <textarea name="text" cols="0" rows="10" class="contact__input"></textarea>
                     <button onclick="popupen()" type="submit" class="contact__button button">Send</button>
                 </form>
             </div>
-        </section>
+        </section> -->
+        <!--===== Formulário estático ===-->
+
+        		<!--===== FORMULÁRIO RESPONSIVO =====-->
+		<div id="form-container" class="minimized">
+			<button id="toggle-button">+</button> <!-- Botão de maximizar/minimizar -->
+			<div id="form-content">
+				<h2 id="titulo_form">Contact</h2>
+				<form action="https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH" method="post">
+					<!-- API SHEET MONKEY -->
+					<label for="name">Name:</label>
+					<input type="text" id="name" name="contact" required><br>
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required><br>
+					<label for="message">Message:</label>
+					<textarea id="message" name="text" rows="5" required></textarea><br>
+					<button onclick="popuppt()" type="submit" id="submit-button">Enviar</button>
+				</form>
+			</div>
+		</div>
+		<!--===== FORMULÁRIO RESPONSIVO =====-->
+
     </main>
 
     <!--===== FOOTER =====-->
@@ -229,12 +250,14 @@
                     class='bx bxl-instagram'></i></a>
             <a href="https://github.com/bruno-biancalana" target="_blank" class="footer__icon"><i
                     class='bx bxl-github'></i></a>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+           
+           <!--WHATSAPP
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
             <a href="https://wa.me/5511953656061?text=Olá!%20vi%20seu%20portifólio" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
   z-index:1000;" target="_blank">
                 <i style="margin-top:16px" class="fa fa-whatsapp"></i>
             </a>
-        </div>
+        </div>-->
         <p class="footer__copy"> Design base by &#169;Bedimcode.</p>
     </footer>
     <!--===== SCROLL REVEAL =====-->
