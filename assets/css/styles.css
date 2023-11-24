@@ -417,6 +417,12 @@ img {
   }
 }
 
+@media screen and (max-width: 420px) {
+  .home__img {
+    margin-bottom: 70px;
+  }
+}
+
 @media screen and (min-width: 576px) {
   .home {
     padding: 4rem 0 2rem;
