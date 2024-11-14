@@ -1,3 +1,25 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Capturar todos os elementos com data-track
+    const trackableButtons = document.querySelectorAll('[data-track]');
+  
+    trackableButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const eventLabel = button.getAttribute('data-track');
+        
+        // Enviar evento para Google Tag Manager
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            event: 'button_click',
+            button_label: eventLabel,
+          });
+        }
+  
+        // Log para depuração (opcional)
+        console.log(`Botão clicado: ${eventLabel}`);
+      });
+    });
+  });
+  
 /*===== MENU SHOW =====*/ 
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
