@@ -427,6 +427,9 @@ img {
   .home {
     padding: 4rem 0 2rem;
   }
+  .home__data {
+    max-width: 60%;
+  }
   .home__social {
     padding-top: 0;
     padding-bottom: 2.5rem;
@@ -499,6 +502,11 @@ img {
   }
   .home {
     padding: 8rem 0 2rem;
+  }
+  .home__data {
+    max-width: 55%;
+    position: relative;
+    z-index: 10;
   }
   .home__img {
     width: 400px;
