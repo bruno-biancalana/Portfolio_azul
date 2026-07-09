@@ -105,10 +105,13 @@ if (contactForm) {
 
         fetch(contactForm.action, {
             method: 'POST',
-            body: new FormData(contactForm)
+            body: new FormData(contactForm),
+            redirect: 'manual'
         })
         .then(response => {
-            if (response.ok) {
+            // Com redirect: 'manual', o navegador não segue o redirecionamento 302 do SheetMonkey,
+            // evitando erro de CORS. A resposta resolvida terá status 0 ou tipo 'opaqueredirect'.
+            if (response.ok || response.status === 0 || response.type === 'opaqueredirect') {
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
