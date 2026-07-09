@@ -1,24 +1,4 @@
-/* ALERTS ESTILIZADOS, PÓS ENVIO DO FORMULÁRIO */
-
-function popuppt() {
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Mensagem enviada com sucesso! Em breve entrarei em contato ;) ',
-        showConfirmButton: false,
-        timer: 3000
-    })
-}
-
-function popupen() {
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Message sent successfully! I will contact you soon ;) ',
-        showConfirmButton: false,
-        timer: 3000
-    })
-}
+/* ALERTS ESTILIZADOS, PÓS ENVIO DO FORMULÁRIO (Removido do HTML para controle assíncrono via JS) */
 document.addEventListener('DOMContentLoaded', () => {
     
     const trackableButtons = document.querySelectorAll('[data-track]');
@@ -63,12 +43,12 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 const sections = document.querySelectorAll('section[id]')
 
 function scrollActive(){
-    const scrollY = window.pageYOffset
+    const scrollY = window.scrollY
 
     sections.forEach(current =>{
         const sectionHeight = current.offsetHeight
         const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+        const sectionId = current.getAttribute('id')
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
             document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
@@ -97,24 +77,84 @@ sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
 
 const formContainer = document.getElementById('form-container');
 const toggleButton = document.getElementById('toggle-button');
-const minimizeButton = document.getElementById('minimize-button');
 
-toggleButton.addEventListener('click', () => {
-    formContainer.classList.toggle('minimized');
-    if (formContainer.classList.contains('minimized')) {
-        toggleButton.innerText = '+';
-        minimizeButton.style.display = 'none';
-    } else {
-        toggleButton.innerText = '-';
-        minimizeButton.style.display = 'block'; // Exibe o botão de minimizar ao maximizar
-    }
-});
+if (toggleButton && formContainer) {
+    toggleButton.addEventListener('click', () => {
+        formContainer.classList.toggle('minimized');
+        if (formContainer.classList.contains('minimized')) {
+            toggleButton.innerText = '+';
+        } else {
+            toggleButton.innerText = '-';
+        }
+    });
+}
 
-minimizeButton.addEventListener('click', () => {
-    formContainer.classList.add('minimized');
-    toggleButton.innerText = '+';
-    minimizeButton.style.display = 'none'; // Oculta o botão de minimizar ao minimizar manualmente
-});
+// Envio assíncrono do formulário com SweetAlert2
+const contactForm = document.querySelector('#form-container form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitButton ? submitButton.innerText : 'Enviar';
+        
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerText = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
+        }
+
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm)
+        })
+        .then(response => {
+            if (response.ok) {
+                if (document.documentElement.lang === 'en') {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Message sent successfully! I will contact you soon ;) ',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                } else {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Mensagem enviada com sucesso! Em breve entrarei em contato ;) ',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }
+                
+                contactForm.reset();
+                
+                if (formContainer) {
+                    formContainer.classList.add('minimized');
+                    if (toggleButton) toggleButton.innerText = '+';
+                }
+            } else {
+                throw new Error('Erro na resposta do servidor.');
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: document.documentElement.lang === 'en' ? 'Oops...' : 'Ops...',
+                text: document.documentElement.lang === 'en' 
+                    ? 'Something went wrong while sending the message. Please try again.' 
+                    : 'Algo deu errado ao enviar a mensagem. Por favor, tente novamente.'
+            });
+        })
+        .finally(() => {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerText = originalBtnText;
+            }
+        });
+    });
+}
 /* Formulário responsivo */ 
 
 
