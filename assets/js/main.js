@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Disparo dos Eventos para o Google Tag Manager / GA4
         if (window.dataLayer) {
-            // A: Evento Personalizado Rico (Recomendado)
+            // A: Evento Personalizado Rico (Recomendado para GTM)
             window.dataLayer.push({
                 event: 'custom_click',
                 click_category: category,
@@ -88,7 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     button_label: label
                 });
             }
+        }
 
+        // C: Envio Direto via Gtag (Garante envio para o GA4 caso não use GTM)
+        if (typeof gtag === 'function') {
+            gtag('event', 'custom_click', {
+                click_category: category,
+                click_label: label || 'unlabeled_click',
+                click_text: clickText || 'no_text',
+                click_url: clickUrl || 'no_url',
+                page_language: pageLang
+            });
+
+            if (label) {
+                gtag('event', 'button_click', {
+                    button_label: label
+                });
+            }
         }
     });
 });
