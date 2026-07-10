@@ -37,9 +37,12 @@
 </head>
 
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!--===== HEADER =====-->
     <header class="l-header">
-        <nav class="nav bd-grid">
+        <nav class="nav bd-grid" role="navigation" aria-label="Main navigation">
             <div>
                 <a href="#" class="nav__logo">Bruno Biancalana</a>
             </div>
@@ -54,17 +57,17 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
+            <div class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
                 <i class='bx bx-menu'></i>
             </div>
         </nav>
     </header>
 
-    <main class="l-main">
+    <main class="l-main" id="main-content">
         <!--===== HOME =====-->
-        <section class="home bd-grid" id="home">
+        <section class="home bd-grid" id="home" aria-labelledby="home-title">
             <div class="home__data">
-                <h1 class="home__title">Hello,<br>My name is <span class="home__title-color">Bruno Biancalana!</span><br>Fullstack
+                <h1 class="home__title" id="home-title">Hello,<br>My name is <span class="home__title-color">Bruno Biancalana!</span><br>Fullstack
                     developer</h1>
 
                 <a href="index.html" class="button">Português</a>
@@ -91,19 +94,19 @@
                     <g mask="url(#mask0)">
                         <path
                             d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-                        <image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png" />
+                        <image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png" loading="lazy" />
                     </g>
                 </svg>
             </div>
         </section>
 
         <!--===== ABOUT =====-->
-        <section class="about section " id="about">
-            <h2 class="section-title">About</h2>
+        <section class="about section " id="about" aria-labelledby="about-title">
+            <h2 class="section-title" id="about-title">About</h2>
 
             <div class="about__container bd-grid">
                 <div class="about__img">
-                    <img src="assets/img/sobre.jpg" alt="Photo of Bruno Biancalana - Front-End Developer and Data Analyst">
+                    <img src="assets/img/sobre.jpg" alt="Photo of Bruno Biancalana - Front-End Developer and Data Analyst" loading="lazy">
                 </div>
 
                 <div>
@@ -126,8 +129,8 @@
         </section>
 
         <!--===== SKILLS =====-->
-        <section class="skills section" id="skills">
-            <h2 class="section-title">Skills</h2>
+        <section class="skills section" id="skills" aria-labelledby="skills-title">
+            <h2 class="section-title" id="skills-title">Skills</h2>
 
             <div class="skills__container bd-grid">
                 <div>
@@ -191,62 +194,68 @@
         </section>
 
         <!--===== WORK =====-->
-        <section class="work section" id="work">
-            <h2 class="section-title">Projects</h2>
+        <section class="work section" id="work" aria-labelledby="work-title">
+            <h2 class="section-title" id="work-title">Projects</h2>
 
             <div class="work__container bd-grid">
 
                 <!-- SORTEIO DE VAGAS EM CONDOMÍNIO -->
                 <a href="https://github.com/bruno-biancalana/condominio_v01.2" target="_blank" class="work__img">
-                    <img src="assets/img/condominio.jpg" alt="Condo Parking Slot Draw">
+                    <img src="assets/img/condominio.jpg" alt="Condo Parking Slot Draw" loading="lazy">
                 </a>
 
                 <!-- CONTROLE DE ESTOQUE COM POWER APPS -->
                 <a href="https://www.linkedin.com/pulse/integra%25C3%25A7%25C3%25A3o-power-apps-bi-bruno-biancalana/?trackingId=eJBCQ%2BQWRfy7JN3kys5krw%3D%3D"
                     target="_blank" class="work__img">
-                    <img src="assets/img/capa.png" alt="Inventory Control with Power Apps">
+                    <img src="assets/img/capa.png" alt="Inventory Control with Power Apps" loading="lazy">
                 </a>
 
                 <a href="https://www.linkedin.com/pulse/dashboard-de-monitoramento-covid-19-com-power-bi-bruno-biancalana/?trackingId=T0YiJx5sRPib2eAu80ahkQ%3D%3D"
                     target="_blank" class="work__img">
-                    <img src="assets/img/dash.jfif" alt="COVID-19 Monitoring Dashboard">
+                    <img src="assets/img/dash.jfif" alt="COVID-19 Monitoring Dashboard" loading="lazy">
                 </a>
                             <a href="https://drive.google.com/file/d/16fGq6ln06tmxV7k064fSIaFj-ExZl7d2/view?usp=sharing"
                                 target="_blank" class="work__img">
-                                <img src="assets/img/hidrometro.png" alt="Hidrômetro">
+                                <img src="assets/img/hidrometro.png" alt="Hidrômetro" loading="lazy">
                             </a>
                             <a href="https://github.com/bruno-biancalana/batflix" target="_blank" class="work__img">
-                                <img src="assets/img/batflix.jpg" alt="Batflix">
+                                <img src="assets/img/batflix.jpg" alt="Batflix" loading="lazy">
                             </a>
                             <a href="https://github.com/bruno-biancalana/cobra_kai" target="_blank" class="work__img">
-                                <img src="assets/img/cobrakai.jpg" alt="Cobra Kai">
+                                <img src="assets/img/cobrakai.jpg" alt="Cobra Kai" loading="lazy">
                             </a>
                             <a href="https://github.com/bruno-biancalana/qrcode_science" target="_blank"
                                 class="work__img">
-                                <img src="assets/img/qrscience.png" alt="QR Code Science Login">
+                                <img src="assets/img/qrscience.png" alt="QR Code Science Login" loading="lazy">
                             </a>
                             <a href="https://github.com/bruno-biancalana/pi_boot" target="_blank" class="work__img">
-                                <img src="assets/img/pi.jpg" alt="Integrated Project First Page">
+                                <img src="assets/img/pi.jpg" alt="Integrated Project First Page" loading="lazy">
                             </a>
                             <a href="https://topsalgados.netlify.app" target="_blank" class="work__img">
-                                <img src="assets/img/topsalgados.jpg" alt="Top Salgados">
+                                <img src="assets/img/topsalgados.jpg" alt="Top Salgados" loading="lazy">
                             </a>
             </div>
         </section>
 
         <!--===== FORMULÁRIO RESPONSIVO =====-->
-        <div id="form-container" class="minimized">
-            <button id="toggle-button">+</button> <!-- Botão de maximizar/minimizar -->
+        <div id="form-container" class="minimized" role="dialog" aria-labelledby="titulo_form">
+            <button id="toggle-button" aria-label="Open contact form">+</button> <!-- Botão de maximizar/minimizar -->
             <div id="form-content">
                 <h2 id="titulo_form">Contact</h2>
-                <form action="https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH" method="post">
+                <form method="post" aria-label="Contact form">
                     <!-- API SHEET MONKEY -->
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="contact" required><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required><br>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="text" rows="5" required></textarea><br>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="contact" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="text" rows="5" required aria-required="true"></textarea>
+                    </div>
                     <button type="submit" id="submit-button">Send</button>
                 </form>
             </div>

@@ -181,9 +181,15 @@ if (toggleButton && formContainer) {
     });
 }
 
+// Configuração da API do SheetMonkey (movida do HTML para JS por segurança)
+const SHEETMONKEY_API_URL = 'https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH';
+
 // Envio assíncrono do formulário com SweetAlert2
 const contactForm = document.querySelector('#form-container form');
 if (contactForm) {
+    // Define a action do formulário via JavaScript
+    contactForm.action = SHEETMONKEY_API_URL;
+    
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -195,7 +201,7 @@ if (contactForm) {
             submitButton.innerText = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
         }
 
-        fetch(contactForm.action, {
+        fetch(SHEETMONKEY_API_URL, {
             method: 'POST',
             body: new FormData(contactForm),
             redirect: 'manual'

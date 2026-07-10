@@ -45,10 +45,12 @@ No ar desde: 02 / 06 / 2022 -->
 </head>
 
 <body>
+	<!-- Skip to content link for accessibility -->
+	<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
 	<!--===== HEADER =====-->
 	<header class="l-header">
-		<nav class="nav bd-grid">
+		<nav class="nav bd-grid" role="navigation" aria-label="Navegação principal">
 			<div>
 				<a href="#" class="nav__logo">Bruno Biancalana</a>
 			</div>
@@ -61,7 +63,7 @@ No ar desde: 02 / 06 / 2022 -->
 					<li class="nav__item"><a href="#work" class="nav__link" data-track="btn-menu-projetos">Projetos</a></li>
 				</ul>
 			</div>
-			<div class="nav__toggle" id="nav-toggle">
+			<div class="nav__toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
 				<i class='bx bx-menu'></i>
 			</div>
 		</nav>
@@ -104,7 +106,7 @@ No ar desde: 02 / 06 / 2022 -->
 					<g mask="url(#mask0)">
 						<path
 							d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-						<image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png" />
+						<image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png" loading="lazy" />
 					</g>
 				</svg>
 			</div>
@@ -112,12 +114,12 @@ No ar desde: 02 / 06 / 2022 -->
 		</section>
 
 		<!--===== SOBRE =====-->
-		<section class="about section " id="about">
-			<h2 class="section-title">Sobre</h2>
+		<section class="about section " id="about" aria-labelledby="about-title">
+			<h2 class="section-title" id="about-title">Sobre</h2>
 
 			<div class="about__container bd-grid">
 				<div class="about__img">
-					<img src="assets/img/sobre.png" alt="Foto de Bruno Biancalana - Desenvolvedor Front-End e Analista de Dados">
+					<img src="assets/img/sobre.png" alt="Foto de Bruno Biancalana - Desenvolvedor Front-End e Analista de Dados" loading="lazy">
 				</div>
 
 				<div>
@@ -143,8 +145,8 @@ No ar desde: 02 / 06 / 2022 -->
 		<!--===== SOBRE =====-->
 
 		<!--===== HABILIDADES =====-->
-		<section class="skills section" id="skills">
-			<h2 class="section-title">Habilidades</h2>
+		<section class="skills section" id="skills" aria-labelledby="skills-title">
+			<h2 class="section-title" id="skills-title">Habilidades</h2>
 
 			<div class="skills__container bd-grid">
 				<div>
@@ -200,8 +202,8 @@ No ar desde: 02 / 06 / 2022 -->
 		<!--===== HABILIDADES =====-->
 
 		<!--===== PROJETOS =====-->
-		<section class="work section" id="work">
-			<h2 class="section-title">Projetos</h2>
+		<section class="work section" id="work" aria-labelledby="work-title">
+			<h2 class="section-title" id="work-title">Projetos</h2>
 
 			<div class="work__container bd-grid">
 
@@ -255,18 +257,24 @@ No ar desde: 02 / 06 / 2022 -->
 		<!--===== PROJETOS =====-->
 
 		<!--===== FORMULÁRIO RESPONSIVO =====-->
-		<div id="form-container" class="minimized">
-			<button id="toggle-button">+</button> <!-- Botão de maximizar/minimizar -->
+		<div id="form-container" class="minimized" role="dialog" aria-labelledby="titulo_form">
+			<button id="toggle-button" aria-label="Abrir formulário de contato">+</button> <!-- Botão de maximizar/minimizar -->
 			<div id="form-content">
 				<h2 id="titulo_form">Contato</h2>
-				<form action="https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH" method="post">
+				<form method="post" aria-label="Formulário de contato">
 					<!-- API SHEET MONKEY -->
-					<label for="name">Nome:</label>
-					<input type="text" id="name" name="contact" required><br>
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required><br>
-					<label for="message">Mensagem:</label>
-					<textarea id="message" name="text" rows="5" required></textarea><br>
+					<div class="form-group">
+						<label for="name">Nome:</label>
+						<input type="text" id="name" name="contact" required aria-required="true">
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required aria-required="true">
+					</div>
+					<div class="form-group">
+						<label for="message">Mensagem:</label>
+						<textarea id="message" name="text" rows="5" required aria-required="true"></textarea>
+					</div>
 					<button type="submit" id="submit-button">Enviar</button>
 				</form>
 			</div>
