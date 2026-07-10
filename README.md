@@ -1,221 +1,268 @@
-# Portfolio Azul 🌐
+# Bruno Biancalana - Portfolio 🚀
 
-Meu portfólio pessoal - Uma vitrine dos meus projetos e habilidades em desenvolvimento web.
+Personal portfolio website showcasing web development projects and technical skills. Built with modern web technologies and best practices for accessibility and performance.
 
-🔗 **[Acesse o portfólio](https://bruno-biancalana-dev.netlify.app/)**
-
----
-
-## 📋 Índice
-
-- [Sobre](#sobre)
-- [Tecnologias Usadas](#-tecnologias-usadas)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Setup e Instalação](#-setup-e-instalação)
-- [Como Usar](#-como-usar)
-- [Deploy](#-deploy)
-- [Segurança](#-segurança)
-- [Como Contribuir](#-como-contribuir)
-- [Contato](#-contato)
+🔗 **[Live Demo](https://bruno-biancalana-dev.netlify.app/)**
 
 ---
 
-## Sobre
+## 📋 Table of Contents
 
-Este é um portfólio responsivo e moderno desenvolvido com HTML, CSS, SCSS e JavaScript. O projeto showcasa meus melhores trabalhos, habilidades técnicas e fornece uma maneira fácil para potenciais clientes e empregadores entrarem em contato comigo.
+- [About](#about)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Security](#security)
+- [Accessibility](#accessibility)
+- [Performance](#performance)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 ---
 
-## 🛠 Tecnologias Usadas
+## About
 
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos e layout
-- **SCSS** - Preprocessador CSS para melhor organização
-- **JavaScript (Vanilla)** - Interatividade e dinâmica
-- **SheetMonkey** - Integração com Google Sheets (com proteção de segurança)
-- **Netlify** - Deploy e hospedagem
+A responsive and modern personal portfolio website developed with HTML, CSS, SCSS, and JavaScript. This project showcases my best work, technical skills, and provides an easy way for potential clients and employers to get in touch.
+
+**Key Highlights:**
+- 🌐 Bilingual support (Portuguese/English)
+- ♿ WCAG accessibility compliant
+- ⚡ Performance optimized with lazy loading
+- 🔒 Security best practices implemented
+- 📱 Fully responsive design
 
 ---
 
-## 📁 Estrutura do Projeto
+## Features
+
+- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
+- **Bilingual Support** - Portuguese and English versions
+- **Accessibility** - ARIA labels, skip links, keyboard navigation support
+- **Performance** - Lazy loading for images, optimized CSS
+- **Contact Form** - Integrated with SheetMonkey API for message collection
+- **Analytics** - Google Analytics 4 integration with custom event tracking
+- **SEO Optimized** - Meta tags, Open Graph, structured data
+
+---
+
+## Technologies Used
+
+- **HTML5** - Semantic structure and accessibility
+- **CSS3** - Modern styling with custom properties
+- **SCSS** - CSS preprocessor for better organization
+- **JavaScript (Vanilla)** - Interactivity and dynamic features
+- **SheetMonkey API** - Contact form integration
+- **Google Analytics 4** - Analytics and event tracking
+- **ScrollReveal** - Scroll animations
+- **SweetAlert2** - Beautiful alert notifications
+- **Boxicons** - Icon library
+- **Netlify** - Deployment and hosting
+
+---
+
+## Project Structure
 
 ```
-Portfolio_azul/
-├── index.html              # Página principal
-├── style.css              # Estilos CSS compilados
-├── style.scss             # Estilos SCSS (origem)
-├── script.js              # Scripts JavaScript
-├── assets/                # Arquivos de mídia
-│   ├── images/           # Imagens do portfólio
-│   ├── icons/            # Ícones
-│   └── fonts/            # Fontes customizadas
-├── .env.example           # Exemplo de variáveis de ambiente
-├── .gitignore            # Arquivos ignorados pelo Git
-├── README.md             # Este arquivo
-└── package.json          # Dependências do projeto (se aplicável)
+portfolio/
+├── index.html              # Main page (Portuguese)
+├── index_en.html           # English version
+├── assets/
+│   ├── css/
+│   │   └── styles.css     # Compiled CSS
+│   ├── scss/
+│   │   └── styles.scss    # SCSS source files
+│   ├── js/
+│   │   └── main.js        # JavaScript functionality
+│   └── img/               # Project images and assets
+├── .env.example           # Environment variables template
+├── .gitignore            # Git ignore rules
+├── README.md             # This file
+├── SECURITY.md           # Security guidelines
+└── robots.txt            # SEO robots configuration
 ```
 
-### Descrição das Pastas
+### Directory Overview
 
-- **assets/** - Contém todos os arquivos estáticos (imagens, ícones, fontes)
-- **Arquivo raiz** - HTML, CSS/SCSS, JavaScript e configurações
+- **assets/css/** - Compiled CSS stylesheets
+- **assets/scss/** - SCSS source files for development
+- **assets/js/** - JavaScript files for interactivity
+- **assets/img/** - Images and media assets
 
 ---
 
-## 🚀 Setup e Instalação
+## Setup and Installation
 
-### Pré-requisitos
+### Prerequisites
 
-- Git instalado
-- Um editor de código (VS Code recomendado)
-- Navegador atualizado
+- Git installed
+- Code editor (VS Code recommended)
+- Modern web browser
 
-### Passos
+### Steps
 
-1. **Clone o repositório**
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/bruno-biancalana/Portfolio_azul.git
-   cd Portfolio_azul
+   git clone https://github.com/bruno-biancalana/portfolio.git
+   cd portfolio
    ```
 
-2. **Configure variáveis de ambiente**
+2. **Configure environment variables** (optional)
    ```bash
    cp .env.example .env
    ```
-   Adicione suas chaves de API no arquivo `.env`
+   Add your API keys in the `.env` file if needed
 
-3. **Abra o projeto**
-   - Abra `index.html` no navegador, ou
-   - Use uma extensão como "Live Server" no VS Code
-
----
-
-## 💻 Como Usar
-
-### Localmente
-
-1. Abra o arquivo `index.html` no seu navegador
-2. Navegue pela página e interaja com os elementos
-3. Use o formulário de contato para enviar mensagens
-
-### Personalizar
-
-- **Edite `index.html`** - Altere conteúdo e estrutura
-- **Modifique `style.scss`** - Customize cores, fontes e layout
-- **Atualize `script.js`** - Adicione novas funcionalidades
+3. **Open the project**
+   - Open `index.html` in your browser, or
+   - Use VS Code with "Live Server" extension
 
 ---
 
-## �배 Deploy
+## Usage
 
-### Deploy no Netlify (Recomendado)
+### Local Development
 
-1. **Conecte seu repositório**
-   - Acesse [netlify.com](https://netlify.com)
-   - Clique em "New site from Git"
-   - Selecione seu repositório GitHub
+1. Open `index.html` in your browser
+2. Navigate through the page and interact with elements
+3. Test the contact form functionality
+4. Check responsiveness using browser dev tools
+
+### Customization
+
+- **Edit `index.html`** - Modify content and structure
+- **Edit `index_en.html`** - Modify English version content
+- **Modify `assets/scss/styles.scss`** - Customize colors, fonts, and layout
+- **Update `assets/js/main.js`** - Add new features and functionality
+
+---
+
+## Deployment
+
+### Netlify (Recommended)
+
+1. **Connect your repository**
+   - Visit [netlify.com](https://netlify.com)
+   - Click "New site from Git"
+   - Select your GitHub repository
 
 2. **Configure build settings**
-   - Build command: (deixe vazio para projeto estático)
-   - Publish directory: `.` (raiz do projeto)
+   - Build command: (leave empty for static site)
+   - Publish directory: `.` (root directory)
 
-3. **Configure variáveis de ambiente**
-   - Na seção "Environment variables", adicione suas chaves de API
+3. **Environment variables**
+   - Add any required API keys in "Environment variables" section
 
-4. **Deploy automático**
-   - Cada push para `master` faz deploy automático
+4. **Automatic deployment**
+   - Every push to main branch triggers automatic deployment
 
-### Deploy em outras plataformas
+### Other Platforms
 
-- **GitHub Pages** - Ative em Settings > Pages
-- **Vercel** - Importar projeto do Git
+- **GitHub Pages** - Enable in Settings > Pages
+- **Vercel** - Import project from Git
 - **Firebase** - `firebase deploy`
 
 ---
 
-## 🔒 Segurança
+## Security
 
-### ⚠️ Importante
+### Security Best Practices Implemented
 
-#### 1. Arquivo de Verificação do Google
+- ✅ API endpoints moved from HTML to JavaScript
+- ✅ Environment variables for sensitive data
+- ✅ Proper `.gitignore` configuration
+- ✅ No hardcoded credentials in code
+- ✅ HTTPS enforced in production
 
-**Problema:** Arquivo `google727e1df49335357d.html` pode expor informações sensíveis.
+### Security Guidelines
 
-**Solução:**
-```bash
-# Adicione ao .gitignore
-echo "google*.html" >> .gitignore
-
-# Adicione o arquivo na raiz do servidor (via Netlify)
-# Upload via Netlify UI ou use _redirects
-```
-
-#### 2. API SheetMonkey Protegida
-
-**Problema:** API exposta no frontend pode ser abusada.
-
-**Solução recomendada:**
-
-```javascript
-// ❌ EVITE isto:
-const API_KEY = 'sua-chave-pública';
-
-// ✅ FAÇA isto:
-// Use variáveis de ambiente
-const API_KEY = process.env.SHEETMONKEY_API_KEY;
-
-// Ou use um backend intermediário
-fetch('/api/contact', {
-  method: 'POST',
-  body: JSON.stringify(formData)
-});
-```
-
-**Arquivo `.env` (exemplo):**
-```
-SHEETMONKEY_API_KEY=sua-chave-segura
-GOOGLE_VERIFICATION_ID=seu-id
-```
-
-**Arquivo `.env.example` (sem valores sensíveis):**
-```
-SHEETMONKEY_API_KEY=
-GOOGLE_VERIFICATION_ID=
-```
+See [SECURITY.md](SECURITY.md) for detailed security information and vulnerability reporting guidelines.
 
 ---
 
-## 🤝 Como Contribuir
+## Accessibility
 
-1. **Faça um Fork** do projeto
-2. **Crie uma branch** com sua feature (`git checkout -b feature/nova-feature`)
-3. **Commit suas mudanças** (`git commit -m 'Add: nova feature'`)
-4. **Push para a branch** (`git push origin feature/nova-feature`)
-5. **Abra um Pull Request**
+### WCAG Compliance
 
-### Padrão de Commits
+This project follows WCAG 2.1 Level AA guidelines:
 
-- `feat:` - Nova funcionalidade
-- `fix:` - Correção de bug
-- `docs:` - Documentação
-- `style:` - Formatação
-- `refactor:` - Refatoração
-- `chore:` - Tarefas administrativas
+- ✅ Semantic HTML structure
+- ✅ ARIA labels and roles
+- ✅ Keyboard navigation support
+- ✅ Skip to content link
+- ✅ Proper color contrast
+- ✅ Form labeling and error handling
+- ✅ Alt text for images
+- ✅ Focus indicators
+
+### Accessibility Features
+
+- **Skip Link** - Allows keyboard users to skip navigation
+- **ARIA Labels** - Descriptive labels for interactive elements
+- **Semantic HTML** - Proper use of headings, landmarks, and regions
+- **Form Accessibility** - Proper labeling and required field indicators
+- **Focus Management** - Visible focus states for keyboard navigation
 
 ---
 
-## 📞 Contato
+## Performance
+
+### Optimization Implemented
+
+- ✅ Lazy loading for images
+- ✅ Optimized CSS with custom properties
+- ✅ Minimal external dependencies
+- ✅ Efficient JavaScript with event delegation
+- ✅ Responsive images with appropriate sizing
+
+### Performance Metrics
+
+- **Lighthouse Score**: Target 90+ in all categories
+- **Image Optimization**: Lazy loading and proper formatting
+- **CSS Optimization**: Minified production builds
+- **JavaScript Efficiency**: Debounced scroll events, optimized selectors
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. **Fork** the repository
+2. **Create a branch** for your feature (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
+
+### Commit Convention
+
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation changes
+- `style:` - Code style changes
+- `refactor:` - Code refactoring
+- `perf:` - Performance improvements
+- `a11y:` - Accessibility improvements
+- `test:` - Adding or updating tests
+- `chore:` - Maintenance tasks
+
+---
+
+## Contact
 
 - **Portfolio:** [bruno-biancalana-dev.netlify.app](https://bruno-biancalana-dev.netlify.app/)
 - **GitHub:** [@bruno-biancalana](https://github.com/bruno-biancalana)
-- **Email:** Use o formulário no portfólio
+- **LinkedIn:** [Bruno Biancalana](https://www.linkedin.com/in/bruno-biancalana-a828b5182)
+- **Email:** Use the contact form on the portfolio
 
 ---
 
-## 📄 Licença
+## License
 
-Este projeto é de uso pessoal e educacional.
+This project is for personal and educational use.
 
 ---
 
-**Última atualização:** Maio de 2026
+**Last Updated:** July 2026
