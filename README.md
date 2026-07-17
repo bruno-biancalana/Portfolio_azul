@@ -42,7 +42,7 @@ A responsive and modern personal portfolio website developed with HTML, CSS, SCS
 - **Bilingual Support** - Portuguese and English versions
 - **Accessibility** - ARIA labels, skip links, keyboard navigation support
 - **Performance** - Lazy loading for images, optimized CSS
-- **Contact Form** - Integrated with SheetMonkey API for message collection
+- **Contact Form** - Protected by a Netlify Function before forwarding messages to SheetMonkey
 - **Analytics** - Google Analytics 4 integration with custom event tracking
 - **SEO Optimized** - Meta tags, Open Graph, structured data
 
@@ -60,6 +60,7 @@ A responsive and modern personal portfolio website developed with HTML, CSS, SCS
 - **SweetAlert2** - Beautiful alert notifications
 - **Boxicons** - Icon library
 - **Netlify** - Deployment and hosting
+- **Netlify Functions** - Server-side validation and contact provider proxy
 
 ---
 
@@ -109,11 +110,11 @@ portfolio/
    cd portfolio
    ```
 
-2. **Configure environment variables** (optional)
+2. **Configure environment variables for Netlify**
    ```bash
    cp .env.example .env
    ```
-   Add your API keys in the `.env` file if needed
+   Configure `SHEETMONKEY_API_URL` and `ALLOWED_ORIGIN` in the Netlify dashboard. Do not place the provider URL in frontend JavaScript.
 
 3. **Open the project**
    - Open `index.html` in your browser, or
@@ -150,10 +151,11 @@ portfolio/
 
 2. **Configure build settings**
    - Build command: (leave empty for static site)
-   - Publish directory: `.` (root directory)
+   - Publish directory and functions directory are defined in `netlify.toml`
 
 3. **Environment variables**
-   - Add any required API keys in "Environment variables" section
+   - Add `SHEETMONKEY_API_URL` with the complete SheetMonkey form URL
+   - Add `ALLOWED_ORIGIN` with the public site origin, without a trailing slash
 
 4. **Automatic deployment**
    - Every push to main branch triggers automatic deployment
@@ -170,8 +172,8 @@ portfolio/
 
 ### Security Best Practices Implemented
 
-- ✅ API endpoints moved from HTML to JavaScript
-- ✅ Environment variables for sensitive data
+- ✅ External contact endpoint kept in a server-side environment variable
+- ✅ Serverless validation, honeypot, origin checks, request-size limits, and basic per-IP throttling
 - ✅ Proper `.gitignore` configuration
 - ✅ No hardcoded credentials in code
 - ✅ HTTPS enforced in production

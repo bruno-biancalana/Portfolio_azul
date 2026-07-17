@@ -181,16 +181,16 @@ if (toggleButton && formContainer) {
     });
 }
 
-// Configuração da API do SheetMonkey (movida do HTML para JS por segurança)
-const SHEETMONKEY_API_URL = 'https://api.sheetmonkey.io/form/sfQnAEpPsyD6Ck9r9tEWWH';
+// O navegador envia apenas para a função do próprio site. O endpoint externo
+// permanece em uma variável de ambiente no Netlify.
+const CONTACT_API_URL = '/api/contact';
 
 // Envio assíncrono do formulário com SweetAlert2
 const contactForm = document.querySelector('#form-container form');
 if (contactForm) {
-    // Define a action do formulário via JavaScript
-    contactForm.action = SHEETMONKEY_API_URL;
-    
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.action = CONTACT_API_URL;
+
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -201,15 +201,15 @@ if (contactForm) {
             submitButton.innerText = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
         }
 
-        fetch(SHEETMONKEY_API_URL, {
-            method: 'POST',
-            body: new FormData(contactForm),
-            redirect: 'manual'
-        })
-        .then(response => {
-            // Com redirect: 'manual', o navegador não segue o redirecionamento 302 do SheetMonkey,
-            // evitando erro de CORS. A resposta resolvida terá status 0 ou tipo 'opaqueredirect'.
-            if (response.ok || response.status === 0 || response.type === 'opaqueredirect') {
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(CONTACT_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(formData.entries()))
+            });
+
+            if (response.ok) {
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
@@ -237,8 +237,7 @@ if (contactForm) {
             } else {
                 throw new Error('Erro na resposta do servidor.');
             }
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Form submission error:', error);
             Swal.fire({
                 icon: 'error',
@@ -247,13 +246,12 @@ if (contactForm) {
                     ? 'Something went wrong while sending the message. Please try again.' 
                     : 'Algo deu errado ao enviar a mensagem. Por favor, tente novamente.'
             });
-        })
-        .finally(() => {
+        } finally {
             if (submitButton) {
                 submitButton.disabled = false;
                 submitButton.innerText = originalBtnText;
             }
-        });
+        }
     });
 }
 /* Formulário responsivo */ 
