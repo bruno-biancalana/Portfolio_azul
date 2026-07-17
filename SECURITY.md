@@ -6,7 +6,7 @@
 
 - O navegador envia mensagens para uma função serverless do próprio site.
 - O endpoint do SheetMonkey fica na variável `SHEETMONKEY_API_URL` do Netlify e não é enviado ao navegador.
-- A função valida origem, método, tipo e tamanho da requisição e os campos recebidos.
+- A função valida origem, método, tipo e tamanho da requisição e os campos recebidos. Em previews, aceita apenas a origem oficial informada pelo próprio Netlify.
 - Um campo honeypot e uma limitação básica por IP reduzem spam automatizado.
 - A limitação em memória é complementar e não substitui uma solução persistente ou CAPTCHA em cenários de abuso intenso.
 

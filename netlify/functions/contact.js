@@ -24,9 +24,14 @@ exports.handler = async (event) => {
     return response(405, 'Method not allowed');
   }
 
-  const allowedOrigin = process.env.ALLOWED_ORIGIN;
   const origin = event.headers.origin;
-  if (allowedOrigin && origin && origin !== allowedOrigin) {
+  const allowedOrigins = [
+    process.env.ALLOWED_ORIGIN,
+    process.env.URL,
+    process.env.DEPLOY_PRIME_URL
+  ].filter(Boolean).map(value => value.replace(/\/$/, ''));
+
+  if (origin && allowedOrigins.length && !allowedOrigins.includes(origin.replace(/\/$/, ''))) {
     return response(403, 'Origin not allowed');
   }
 
