@@ -260,7 +260,10 @@ No ar desde: 02 / 06 / 2022 -->
 			<div id="form-content">
 				<h2 id="titulo_form">Contato</h2>
 				<form method="post" aria-label="Formulário de contato">
-					<!-- API SHEET MONKEY -->
+					<div aria-hidden="true" style="position:absolute;left:-9999px">
+						<label for="company">Empresa (deixe em branco)</label>
+						<input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+					</div>
 					<div class="form-group">
 						<label for="name">Nome:</label>
 						<input type="text" id="name" name="contact" required aria-required="true">
