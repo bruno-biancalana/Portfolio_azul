@@ -657,3 +657,33 @@ label {
 }
 
 /*formulário responsivo*/
+
+/* ===== PORTFOLIO V2 2026 ===== */
+.home__eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:var(--first-color);margin-bottom:var(--mb-2)}
+.home__role{font-size:.72em;color:var(--second-color)}
+.home__description{max-width:600px;font-size:1.08rem;line-height:1.7;margin-top:-1rem;margin-bottom:var(--mb-4)}
+.home__actions{display:flex;gap:1rem;flex-wrap:wrap}
+.button--ghost{background:transparent;color:var(--first-color);border:2px solid var(--first-color);padding:calc(.75rem - 2px) calc(2.5rem - 2px)}
+.about__text{line-height:1.75}
+.about__highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1.5rem}
+.about__highlights span{padding:.85rem 1rem;border-radius:.6rem;box-shadow:0 4px 20px rgba(14,36,49,.1);font-size:.9rem}
+.about__highlights strong{display:block;color:var(--first-color);font-size:1.15rem}
+.expertise__grid{display:grid;gap:1.25rem}
+.expertise__card,.case__card{padding:1.6rem;border-radius:.75rem;box-shadow:0 4px 25px rgba(14,36,49,.12);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.expertise__card:hover,.case__card:hover{transform:translateY(-5px);box-shadow:0 12px 30px rgba(14,36,49,.16)}
+.expertise__card i{font-size:2rem;color:var(--first-color);margin-bottom:.7rem}
+.expertise__card h3,.case__card h3{margin-bottom:.6rem}
+.expertise__card p,.case__card p{line-height:1.6}
+.section-intro{text-align:center;max-width:760px;line-height:1.7;margin-top:-2rem;margin-bottom:2rem}
+.cases__grid{display:grid;gap:1.5rem}
+.case__tag{display:inline-block;color:var(--first-color);font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.75rem}
+.case__stack{margin-top:1rem;padding-top:1rem;border-top:1px solid #e7e9ec;font-size:.85rem;font-weight:600;color:#52606d}
+.legacy{margin-top:3rem;text-align:center}
+.legacy p{margin:.5rem 0 1rem}
+.legacy__links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.legacy__links a{padding:.65rem 1rem;border:1px solid #dce2e8;border-radius:.5rem;font-weight:600;color:var(--second-color)}
+.legacy__links a:hover{color:var(--first-color);border-color:var(--first-color)}
+.footer__position{font-size:.9rem;font-weight:400;margin-top:-1rem;margin-bottom:1.5rem;opacity:.8}
+@media screen and (min-width:576px){.expertise__grid{grid-template-columns:repeat(2,1fr)}.cases__grid{grid-template-columns:repeat(2,1fr)}}
+@media screen and (min-width:768px){.expertise__grid{grid-template-columns:repeat(3,1fr)}.cases__grid{grid-template-columns:repeat(3,1fr)}}
+@media screen and (max-width:575px){.about__highlights{grid-template-columns:1fr}.home__description{max-width:75%;font-size:.95rem}.home__actions{max-width:75%}.home__actions .button{padding:.65rem 1.25rem}.section-intro{margin-top:-1rem}}
