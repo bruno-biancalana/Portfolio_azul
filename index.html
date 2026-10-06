@@ -20,6 +20,12 @@
   <link rel="alternate" hreflang="pt-br" href="https://bruno-biancalana-dev.netlify.app/">
   <link rel="alternate" hreflang="en" href="https://bruno-biancalana-dev.netlify.app/index_en.html">
   <title>Bruno Biancalana | Senior Front-End Developer · CRO & Experimentation</title>
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0d1b2a">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bruno Biancalana | Senior Front-End Developer · CRO & Experimentation">
+  <meta name="twitter:description" content="Front-End Engineering, CRO, experimentação, Adobe Target e dados aplicados a experiências digitais mensuráveis.">
+  <meta name="twitter:image" content="https://bruno-biancalana-dev.netlify.app/assets/img/novo%20logo.png">
   <!-- Netlify Deploy Preview refresh: 2026-10-06 -->
 </head>
 <body>
@@ -39,7 +45,7 @@
     <p class="home__eyebrow">FRONT-END · CRO · EXPERIMENTATION</p>
     <h1 class="home__title">Olá, eu sou<br><span class="home__title-color">Bruno Biancalana.</span><br><span class="home__role">Senior Front-End Developer</span></h1>
     <p class="home__description">Desenvolvimento, experimentação e dados conectados para criar experiências digitais mensuráveis.</p>
-    <div class="home__actions"><a href="#work" class="button">Ver cases</a><a href="index_en.html" class="button button--ghost">English</a></div>
+    <div class="home__actions"><a href="#work" class="button">Ver cases</a><a href="index_en.html" class="button button--ghost" data-analytics="language_change" data-language-target="en">English</a></div>
   </div>
   <div class="home__social">
     <a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="home__social-icon" data-track="icon-menu-linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
@@ -60,7 +66,7 @@
       <span class="interview__eyebrow">ENTREVISTA</span>
       <h3>Trajetória, tecnologia e carreira</h3>
       <p>Uma conversa sobre minha trajetória profissional, experiências e visão sobre tecnologia e carreira — um pouco da pessoa por trás do código, dos experimentos e dos dados.</p>
-      <a href="https://www.youtube.com/watch?v=xVbSVx-5kc0&t=520s" target="_blank" rel="noopener noreferrer" class="interview__link">Assistir no YouTube <i class="bx bx-link-external"></i></a>
+      <a data-analytics="interview_click" href="https://www.youtube.com/watch?v=xVbSVx-5kc0&t=520s" target="_blank" rel="noopener noreferrer" class="interview__link">Assistir no YouTube <i class="bx bx-link-external"></i></a>
     </div>
     <div class="video-responsive interview__video"><iframe src="https://www.youtube.com/embed/xVbSVx-5kc0?start=520" title="Entrevista com Bruno Biancalana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
   </div>
@@ -87,7 +93,20 @@
 <a href="https://github.com/bruno-biancalana/batflix" target="_blank" rel="noopener noreferrer">Batflix <i class="bx bx-link-external"></i></a>
 <a href="https://github.com/bruno-biancalana/cobra_kai" target="_blank" rel="noopener noreferrer">Cobra Kai <i class="bx bx-link-external"></i></a>
 </div></div></section>
-<section class="cta section"><div class="cta__box bd-grid"><div><span class="cta__eyebrow">CONTATO</span><h2>Vamos construir algo mensurável?</h2><p>Estou sempre aberto a conversar sobre Front-End, CRO, experimentação, Adobe Target e desafios técnicos.</p></div><div class="cta__actions"><a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="button"><i class="bx bxl-linkedin"></i> LinkedIn</a><button type="button" class="button button--ghost cta__contact" onclick="document.getElementById('form-container').classList.remove('minimized');document.getElementById('toggle-button').innerText='-'">Enviar mensagem</button></div></div></section>
+
+<section class="professional-links section" aria-labelledby="professional-links-title">
+  <h2 class="section-title" id="professional-links-title">Presença profissional</h2>
+  <p class="section-intro bd-grid">Conheça minha trajetória profissional e trabalhos públicos de engenharia.</p>
+  <div class="professional-links__grid bd-grid">
+    <a class="professional-link" data-analytics="linkedin_click" href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer">
+      <i class="bx bxl-linkedin"></i><span><strong>LinkedIn</strong><small>Experiência profissional & carreira</small></span><i class="bx bx-link-external"></i>
+    </a>
+    <a class="professional-link" data-analytics="github_click" href="https://github.com/bruno-biancalana" target="_blank" rel="noopener noreferrer">
+      <i class="bx bxl-github"></i><span><strong>GitHub</strong><small>Código & engenharia</small></span><i class="bx bx-link-external"></i>
+    </a>
+  </div>
+</section>
+<section class="cta section"><div class="cta__box bd-grid"><div><span class="cta__eyebrow">CONTATO</span><h2>Vamos construir algo mensurável?</h2><p>Estou sempre aberto a conversar sobre Front-End, CRO, experimentação, Adobe Target e desafios técnicos.</p></div><div class="cta__actions"><a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="button" data-analytics="linkedin_click"><i class="bx bxl-linkedin"></i> LinkedIn</a><button type="button" class="button button--ghost cta__contact" data-analytics="contact_open" onclick="document.getElementById('form-container').classList.remove('minimized');document.getElementById('toggle-button').innerText='-'">Enviar mensagem</button></div></div></section>
 <div id="form-container" class="minimized" role="dialog" aria-labelledby="titulo_form"><button id="toggle-button" aria-label="Abrir formulário">+</button><div id="form-content"><h2 id="titulo_form">Contato</h2><form method="post"><div aria-hidden="true" style="position:absolute;left:-9999px"><label for="company">Empresa</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></div><div class="form-group"><label for="name">Nome:</label><input type="text" id="name" name="contact" required></div><div class="form-group"><label for="email">Email:</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="message">Mensagem:</label><textarea id="message" name="text" rows="5" required></textarea></div><button type="submit" id="submit-button">Enviar</button></form></div></div>
 </main>
 <footer class="footer"><p class="footer__title">Bruno Biancalana</p><p class="footer__position">Senior Front-End Developer · CRO & Experimentation</p><div class="footer__social"><a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a><a href="https://github.com/bruno-biancalana" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="GitHub"><i class="bx bxl-github"></i></a></div></footer>
