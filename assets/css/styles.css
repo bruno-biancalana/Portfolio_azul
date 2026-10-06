@@ -687,3 +687,39 @@ label {
 @media screen and (min-width:576px){.expertise__grid{grid-template-columns:repeat(2,1fr)}.cases__grid{grid-template-columns:repeat(2,1fr)}}
 @media screen and (min-width:768px){.expertise__grid{grid-template-columns:repeat(3,1fr)}.cases__grid{grid-template-columns:repeat(3,1fr)}}
 @media screen and (max-width:575px){.about__highlights{grid-template-columns:1fr}.home__description{max-width:75%;font-size:.95rem}.home__actions{max-width:75%}.home__actions .button{padding:.65rem 1.25rem}.section-intro{margin-top:-1rem}}
+
+/* ===== PORTFOLIO V2 POLISH ===== */
+.interview{background:#f7f9fc}
+.interview__container{gap:2rem;align-items:center}
+.interview__eyebrow,.cta__eyebrow,.credentials__label{display:block;color:var(--first-color);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.65rem}
+.interview__copy h3{font-size:1.5rem;margin:0 0 .75rem}
+.interview__copy p{line-height:1.75;margin-bottom:1rem}
+.interview__link{color:var(--first-color);font-weight:600}
+.interview__video{width:100%;border-radius:1rem;box-shadow:0 14px 40px rgba(14,36,49,.16)}
+.credentials{grid-template-columns:1fr;gap:1rem;margin-top:2.5rem}
+.credentials>div{padding:1.25rem;border-left:3px solid var(--first-color);background:#f7f9fc;border-radius:0 .65rem .65rem 0}
+.credentials strong{display:block;margin-bottom:.25rem}.credentials p{font-size:.85rem;color:#52606d}
+.cta__box{background:var(--second-color);color:#fff;border-radius:1rem;padding:2rem;gap:1.5rem;align-items:center}
+.cta__box h2{font-size:1.7rem;margin-bottom:.65rem}.cta__box p{line-height:1.65;opacity:.82}.cta__actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.cta__actions .button{display:inline-flex;align-items:center;gap:.4rem;border:0;cursor:pointer;font-family:inherit;font-size:.9rem;margin:0}
+.cta__actions .button--ghost{border:1px solid rgba(255,255,255,.45);color:#fff}
+
+/* Modern contact card — functionality intentionally unchanged */
+#form-container{z-index:1000;right:24px;bottom:24px;width:min(380px,calc(100vw - 32px));max-height:620px;background:rgba(255,255,255,.98);border:1px solid rgba(14,36,49,.08);border-radius:18px;box-shadow:0 22px 60px rgba(14,36,49,.22);transition:height .3s ease,max-height .3s ease,transform .3s ease;overflow:hidden}
+#form-container.minimized{height:58px;width:190px;border-radius:29px}
+#form-content{padding:26px}
+#titulo_form{font-size:1.35rem;line-height:1.3;margin:0 48px 22px 0;padding:0;text-align:left}
+#form-container.minimized #form-content{padding:17px 22px}
+#form-container.minimized #titulo_form{line-height:24px;padding:0;margin:0;font-size:1rem}
+button#toggle-button{top:18px;right:18px;transform:none;width:36px;height:36px;margin:0;background:var(--first-color);border-radius:50%;font-size:1.15rem;line-height:1;box-shadow:0 5px 14px rgba(56,116,255,.28)}
+#form-container.minimized button#toggle-button{top:11px;right:11px}
+#form-container form{gap:14px}
+#form-container .form-group{display:flex;flex-direction:column;gap:6px}
+#form-container label{font-size:.78rem;font-weight:600;margin:0;color:#52606d}
+#form-container input,#form-container textarea{width:100%;margin:0;padding:11px 13px;border:1px solid #d9e0e8;border-radius:9px;background:#f8fafc;font:inherit;font-size:.9rem;color:var(--second-color);outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+#form-container input:focus,#form-container textarea:focus{background:#fff;border-color:var(--first-color);box-shadow:0 0 0 3px rgba(56,116,255,.12)}
+#form-container textarea{resize:vertical;min-height:110px}
+#submit-button{width:100%;margin:2px 0 0;padding:12px 18px;border:0;border-radius:9px;background:var(--first-color);color:#fff;font-family:inherit;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s}
+#submit-button:hover{background:var(--first-color);transform:translateY(-1px);box-shadow:0 8px 20px rgba(56,116,255,.25)}
+@media screen and (min-width:768px){.interview__container{grid-template-columns:.8fr 1.2fr}.credentials{grid-template-columns:repeat(3,1fr)}.cta__box{grid-template-columns:1fr auto;padding:2.5rem}}
+@media screen and (max-width:575px){#form-container{right:16px;bottom:16px}.cta__box{margin-left:1rem;margin-right:1rem}.interview__container{gap:1.25rem}}
