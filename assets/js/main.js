@@ -1,4 +1,14 @@
 /* ALERTS ESTILIZADOS, PÓS ENVIO DO FORMULÁRIO (Removido do HTML para controle assíncrono via JS) */
+const trackPortfolioEvent = (eventName, params = {}) => {
+    const payload = {
+        page_language: document.documentElement.lang || 'pt-BR',
+        page_path: window.location.pathname,
+        ...params
+    };
+    if (window.dataLayer) window.dataLayer.push({ event: eventName, ...payload });
+    if (typeof gtag === 'function') gtag('event', eventName, payload);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Sistema Avançado e Automático de Rastreamento (Tagging) para GA4 e GTM
     document.addEventListener('click', (e) => {
@@ -67,6 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     label = 'btn-contact-form-click';
                 }
             }
+        }
+
+        // Eventos de negócio do portfólio: nomes estáveis e fáceis de analisar no GA4
+        const analyticsEvent = target.getAttribute('data-analytics');
+        if (analyticsEvent) {
+            trackPortfolioEvent(analyticsEvent, {
+                link_url: clickUrl || undefined,
+                link_text: clickText || undefined,
+                target_language: target.getAttribute('data-language-target') || undefined
+            });
+        } else if (/linkedin\.com/.test(clickUrl)) {
+            trackPortfolioEvent('linkedin_click', { link_url: clickUrl });
+        } else if (/github\.com\/bruno-biancalana/.test(clickUrl)) {
+            trackPortfolioEvent('github_click', { link_url: clickUrl });
         }
 
         // 3. Disparo dos Eventos para o Google Tag Manager / GA4
@@ -143,9 +167,11 @@ function scrollActive(){
         const sectionId = current.getAttribute('id')
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
+            const navAnchor = document.querySelector('.nav__menu a[href="#' + sectionId + '"]')
+            if (navAnchor) navAnchor.classList.add('active')
         }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active')
+            const navAnchor = document.querySelector('.nav__menu a[href="#' + sectionId + '"]')
+            if (navAnchor) navAnchor.classList.remove('active')
         }
     })
 }
@@ -175,8 +201,13 @@ if (toggleButton && formContainer) {
         formContainer.classList.toggle('minimized');
         if (formContainer.classList.contains('minimized')) {
             toggleButton.innerText = '+';
+            toggleButton.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Open contact form' : 'Abrir formulário');
+            toggleButton.setAttribute('aria-expanded', 'false');
         } else {
             toggleButton.innerText = '-';
+            toggleButton.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close contact form' : 'Fechar formulário');
+            toggleButton.setAttribute('aria-expanded', 'true');
+            trackPortfolioEvent('contact_open', { source: 'floating_button' });
         }
     });
 }
@@ -210,6 +241,7 @@ if (contactForm) {
             });
 
             if (response.ok) {
+                trackPortfolioEvent('contact_submit', { status: 'success' });
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
@@ -239,6 +271,7 @@ if (contactForm) {
                 throw new Error(errorData.message || 'Erro na resposta do servidor.');
             }
         } catch (error) {
+            trackPortfolioEvent('contact_submit', { status: 'error' });
             console.error('Form submission error:', error);
             Swal.fire({
                 icon: 'error',
