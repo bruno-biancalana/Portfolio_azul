@@ -1,307 +1,76 @@
-<!-- Meu portfólio pessoal 
-
-No ar desde: 02 / 06 / 2022 -->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="author" content="Bruno Biancalana">
-	<meta http-equiv="Content-Language" content="pt-BR">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description"
-		content="Portfólio de Bruno Biancalana, Desenvolvedor Front-End e Analista de Business Intelligence apaixonado em criar experiências web. Veja meu portfólio e entre em contato para elaborarmos o seu próximo projeto digital!">
-
-	<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon.ico">
-
-	<link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-	<!-- ===== ICONES SOCIAIS ===== -->
-	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
-	<!-- ===== Google tag (gtag.js) GA4 GOOGLE ===== -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-K14D6WTVM8"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-K14D6WTVM8');
-	</script>
-	<!-- ===== Google tag (gtag.js) GA4 GOOGLE ===== -->
-
-	<!-- ===== SEO & Open Graph Tags ===== -->
-	<meta property="og:title" content="Bruno Biancalana | Portfólio - Desenvolvedor Front-End e Analista de Dados">
-	<meta property="og:description" content="Acesse meu portfólio e conheça meus projetos em Front-End, Power BI e muito mais.">
-	<meta property="og:image" content="https://bruno-biancalana-dev.netlify.app/assets/img/novo%20logo.png">
-	<meta property="og:url" content="https://bruno-biancalana-dev.netlify.app/">
-	<meta property="og:type" content="website">
-
-	<link rel="canonical" href="https://bruno-biancalana-dev.netlify.app/">
-	<link rel="alternate" hreflang="pt-br" href="https://bruno-biancalana-dev.netlify.app/">
-	<link rel="alternate" hreflang="en" href="https://bruno-biancalana-dev.netlify.app/index_en.html">
-
-	<title>Bruno Biancalana | Front-End Developer & Data Analyst</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Bruno Biancalana">
+  <meta http-equiv="Content-Language" content="pt-BR">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Senior Front-End Developer especializado em JavaScript, CRO, testes A/B, personalização e Adobe Target, unindo engenharia front-end, dados e experimentação.">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K14D6WTVM8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-K14D6WTVM8');</script>
+  <meta property="og:title" content="Bruno Biancalana | Senior Front-End Developer · CRO & Experimentation">
+  <meta property="og:description" content="Front-End Engineering, CRO, experimentação, Adobe Target e dados aplicados a experiências digitais mensuráveis.">
+  <meta property="og:image" content="https://bruno-biancalana-dev.netlify.app/assets/img/novo%20logo.png">
+  <meta property="og:url" content="https://bruno-biancalana-dev.netlify.app/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://bruno-biancalana-dev.netlify.app/">
+  <link rel="alternate" hreflang="pt-br" href="https://bruno-biancalana-dev.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://bruno-biancalana-dev.netlify.app/index_en.html">
+  <title>Bruno Biancalana | Senior Front-End Developer · CRO & Experimentation</title>
 </head>
-
 <body>
-
-	<!--===== HEADER =====-->
-	<header class="l-header">
-		<nav class="nav bd-grid" role="navigation" aria-label="Navegação principal">
-			<div>
-				<a href="#" class="nav__logo">Bruno Biancalana</a>
-			</div>
-
-			<div class="nav__menu" id="nav-menu">
-				<ul class="nav__list">
-					<li class="nav__item"><a href="#home" class="nav__link active" data-track="btn-menu-home">Home</a></li>
-					<li class="nav__item"><a href="#about" class="nav__link" data-track="btn-menu-sobre">Sobre</a></li>
-					<li class="nav__item"><a href="#skills" class="nav__link"data-track="btn-menu-habilidades">Habilidades</a></li>
-					<li class="nav__item"><a href="#work" class="nav__link" data-track="btn-menu-projetos">Projetos</a></li>
-				</ul>
-			</div>
-			<div class="nav__toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
-				<i class='bx bx-menu'></i>
-			</div>
-		</nav>
-	</header>
-
-	<!--===== ABERTURA CONTAINER PRINCIPAL =====-->
-	<main class="l-main">
-		<!--===== HOME =====-->
-		<section class="home bd-grid" id="home">
-			<div class="home__data">
-				<h1 class="home__title">Olá,<br>Eu sou o <span class="home__title-color">Bruno Biancalana!</span><br>Fullstack
-					developer</h1>
-
-				<a href="index_en.html" class="button">English</a>
-			</div>
-
-			<!--===== ICONES DE REDES SOCIAIS =====-->
-			<div class="home__social">
-				<a href="https://www.linkedin.com/in/bruno-biancalana-a828b5182" target="_blank"
-					class="home__social-icon" id="linkedin-home" data-track="icon-menu-linkedin"><i class='bx bxl-linkedin'></i></a>
-
-				<a href="https://github.com/bruno-biancalana" target="_blank" class="home__social-icon"
-					id="github-home" data-track="icon-menu-github"><i class='bx bxl-github'></i></a>
-
-				<a href="https://web.facebook.com/bruno.biancalana/" target="_blank" class="home__social-icon"id="facebook-home" data-track="icon-menu-facebook"><i class='bx bxl-facebook'></i></a>
-
-				<a href="https://www.instagram.com/bruno_biancalana/" target="_blank" class="home__social-icon" id="instagram-home" data-track="icon-menu-instagram"><i class='bx bxl-instagram'></i></a>
-
-			</div>
-			<!--===== ICONES DE REDES SOCIAIS =====-->
-
-			<!--===== IMAGEM PRINCIPAL =====-->
-			<div class="home__img">
-				<svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink">
-					<mask id="mask0" mask-type="alpha">
-						<path
-							d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-					</mask>
-					<g mask="url(#mask0)">
-						<path
-							d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
-						<image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png" loading="lazy" />
-					</g>
-				</svg>
-			</div>
-			<!--===== IMAGEM PRINCIPAL =====-->
-		</section>
-
-		<!--===== SOBRE =====-->
-		<section class="about section " id="about" aria-labelledby="about-title">
-			<h2 class="section-title" id="about-title">Sobre</h2>
-
-			<div class="about__container bd-grid">
-				<div class="about__img">
-					<img src="assets/img/sobre.png" alt="Foto de Bruno Biancalana - Desenvolvedor Front-End e Analista de Dados" loading="lazy">
-				</div>
-
-				<div>
-					<h2 class="about__subtitle">Quem sou eu?</h2>
-					<p class="about__text">Natural de Joinville - Santa Catarina, atualmente moro em São Paulo. Sou um
-						Desenvolvedor Front-End apaixonado pela fusão de tecnologia e criatividade, formado em Ciências
-						da Computação e com compromisso contínuo com o aprendizado. Atualmente, estou aprofundando meu
-						conhecimento através de um MBA em Análise de Dados com BI e Big Data , combinando minha paixão
-						por desenvolvimento web com uma visão orientada por dados. <br /><br />
-
-						Minha trajetória profissional inclui não apenas a expertise em criar interfaces Web, Dashboards
-						e Aplicativos mas também uma experiência diversificada, que varia desde minha formação técnica
-						em eletrônica até meu serviço como militar no Exército Brasileiro. Essa bagagem variada me
-						proporciona uma perspectiva única e uma abordagem disciplinada para resolver desafios complexos.
-						Gosto de explorar novos desafios que me permitam aprimorar minhas habilidades, colaborando em
-						projetos de impacto e contribuindo para o desenvolvimento de ideias e processos
-						inovadores.<br /><br>
-						Me chame através do formulário no canto inferior direito da página e bora desenvolver um
-						projeto!</p>
-				</div>
-			</div>
-		</section>
-		<!--===== SOBRE =====-->
-
-		<!--===== HABILIDADES =====-->
-		<section class="skills section" id="skills" aria-labelledby="skills-title">
-			<h2 class="section-title" id="skills-title">Habilidades</h2>
-
-			<div class="skills__container bd-grid">
-				<div>
-					<h2 class="skills__subtitle">O que eu faço</h2>
-					<p class="skills__text">Com habilidades em liderança, gestão de projetos e análise de dados, utilizo minha experiência em desenvolvimento para entregar soluções eficientes e orientadas por resultados. Minha abordagem combina visão analítica e foco em inovação, garantindo o sucesso e a qualidade de cada projeto.</p>
-					<div class="skills__data">
-						<div class="skills__names">
-							<i class='bx bxl-html5 skills__icon'></i>
-							<span class="skills__name">HTML5</span>
-						</div>
-						<div class="skills__bar skills__html">
-
-						</div>
-						<div>
-							<span class="skills__percentage">80%</span>
-						</div>
-					</div>
-					<div class="skills__data">
-						<div class="skills__names">
-							<i class='bx bxl-javascript skills__icon'></i>
-							<span class="skills__name">JAVASCRIPT</span>
-						</div>
-						<div class="skills__bar skills__js">
-
-						</div>
-						<div>
-							<span class="skills__percentage">45%</span>
-						</div>
-					</div>
-					<div class="skills__data">
-						<div class="skills__names">
-							<i class='bx bxs-data skills__icon'></i>
-							<span class="skills__name">MY SQL</span>
-						</div>
-						<div class="skills__bar skills__ms">
-
-						</div>
-						<div>
-							<span class="skills__percentage">75%</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="video-responsive">
-					<iframe src="https://www.youtube.com/embed/xVbSVx-5kc0?si=uH0Vl_lLWwWEkozU&start=520" 
-							title="YouTube video player" frameborder="0" 
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-							referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-					</iframe>
-				</div>
-			</div>
-		</section>
-		<!--===== HABILIDADES =====-->
-
-		<!--===== PROJETOS =====-->
-		<section class="work section" id="work" aria-labelledby="work-title">
-			<h2 class="section-title" id="work-title">Projetos</h2>
-
-			<div class="work__container bd-grid">
-
-
-				<!-- LOGIN COM QR CODE -->
-				<a href="https://victorion.netlify.app" target="_blank" class="work__img" data-track="img-projetos-login">
-				<img src="assets/img/formulario.jpg" alt="Login com QR Code">
-				</a>
-
-				<!-- SORTEIO DE VAGAS EM CONDOMÍNIO -->
-				<a href="https://github.com/bruno-biancalana/condominio_v01.2" target="_blank" class="work__img" data-track="img-projetos-condominio">
-					<img src="assets/img/condominio.jpg" alt="Sorteio de Vagas em Condomínio">
-				</a>
-
-				<!-- CONTROLE DE ESTOQUE COM POWER APPS -->
-				<a href="https://www.linkedin.com/pulse/integra%25C3%25A7%25C3%25A3o-power-apps-bi-bruno-biancalana/?trackingId=eJBCQ%2BQWRfy7JN3kys5krw%3D%3D" target="_blank" class="work__img" data-track="img-projetos-powerApps">
-					<img src="assets/img/capa.png" alt="Controle de Estoque com Power Apps">
-				</a>
-
-						<!-- DASHBOARD MONITORAMENTO COVID -->
-						<a href="https://www.linkedin.com/pulse/dashboard-de-monitoramento-covid-19-com-power-bi-bruno-biancalana/?trackingId=T0YiJx5sRPib2eAu80ahkQ%3D%3D" target="_blank" class="work__img" data-track="img-projetos-DashCovid">
-							<img src="assets/img/dash.jfif" alt="Dashboard de Monitoramento COVID-19">
-						</a>
-
-						<!-- PROJETO INTEGRADO -->
-						<a href="https://drive.google.com/file/d/16fGq6ln06tmxV7k064fSIaFj-ExZl7d2/view?usp=sharing" target="_blank" class="work__img" data-track="img-projetos-projetoIntegrado">
-							<img src="assets/img/hidrometro.png" alt="Hidrômetro">
-						</a>
-
-						<!-- BATFLIX -->
-						<a href="https://github.com/bruno-biancalana/batflix" target="_blank" class="work__img" data-track="img-projetos-batflix">
-							<img src="assets/img/batflix.jpg" alt="Batflix">
-						</a>
-
-						<!-- COBRA KAI -->
-						<a href="https://github.com/bruno-biancalana/cobra_kai" target="_blank" class="work__img" data-track="img-projetos-cobraKai">
-							<img src="assets/img/cobrakai.jpg" alt="Cobra Kai">
-						</a>
-
-						<!-- PRIMEIRA PÁGINA DO PI -->
-						<a href="https://github.com/bruno-biancalana/pi_boot" target="_blank" class="work__img" data-track="img-projetos-projetoFrontEnd">
-							<img src="assets/img/pi.jpg" alt="Primeira Página do PI">
-						</a>
-
-						<!-- TOP SALGADOS -->
-						<a href="https://topsalgados.netlify.app" target="_blank" class="work__img" data-track="img-projetos-topSalgados">
-							<img src="assets/img/topsalgados.jpg" alt="Top Salgados">
-						</a>
-			</div>
-		</section>
-		<!--===== PROJETOS =====-->
-
-		<!--===== FORMULÁRIO RESPONSIVO =====-->
-		<div id="form-container" class="minimized" role="dialog" aria-labelledby="titulo_form">
-			<button id="toggle-button" aria-label="Abrir formulário de contato">+</button> <!-- Botão de maximizar/minimizar -->
-			<div id="form-content">
-				<h2 id="titulo_form">Contato</h2>
-				<form method="post" aria-label="Formulário de contato">
-					<div aria-hidden="true" style="position:absolute;left:-9999px">
-						<label for="company">Empresa (deixe em branco)</label>
-						<input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
-					</div>
-					<div class="form-group">
-						<label for="name">Nome:</label>
-						<input type="text" id="name" name="contact" required aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" id="email" name="email" required aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="message">Mensagem:</label>
-						<textarea id="message" name="text" rows="5" required aria-required="true"></textarea>
-					</div>
-					<button type="submit" id="submit-button">Enviar</button>
-				</form>
-			</div>
-		</div>
-		<!--===== FORMULÁRIO RESPONSIVO =====-->
-	</main>
-
-	<!--===== FOOTER =====-->
-	<footer class="footer">
-		<p class="footer__title">Bruno Biancalana</p>
-		<div class="footer__social">
-			<a href="https://web.facebook.com/bruno.biancalana/" target="_blank" class="footer__icon"
-				id="facebook-footer" data-track="icon-footer-facebook"><i class='bx bxl-facebook'></i></a>
-			<a href="https://www.instagram.com/bruno_biancalana/" target="_blank" class="footer__icon"
-				id="instagram-footer" data-track="icon-footer-instagram"><i class='bx bxl-instagram'></i></a>
-			<a href="https://github.com/bruno-biancalana" target="_blank" class="footer__icon"><i class='bx bxl-github' id="github-footer" data-track="icon-footer-github"></i></a>
-
-		</div>
-
-	</footer>
-	<!--===== SCROLL  =====-->
-	<script src="https://unpkg.com/scrollreveal"></script>
-
-	<!--===== MAIN JS =====-->
-	<script src="assets/js/main.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-
-</html>
+<header class="l-header"><nav class="nav bd-grid" role="navigation" aria-label="Navegação principal">
+  <a href="#home" class="nav__logo">Bruno Biancalana</a>
+  <div class="nav__menu" id="nav-menu"><ul class="nav__list">
+    <li class="nav__item"><a href="#home" class="nav__link active" data-track="btn-menu-home">Home</a></li>
+    <li class="nav__item"><a href="#about" class="nav__link" data-track="btn-menu-sobre">Sobre</a></li>
+    <li class="nav__item"><a href="#skills" class="nav__link" data-track="btn-menu-habilidades">Expertise</a></li>
+    <li class="nav__item"><a href="#work" class="nav__link" data-track="btn-menu-cases">Cases</a></li>
+  </ul></div>
+  <div class="nav__toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></div>
+</nav></header>
+<main class="l-main">
+<section class="home bd-grid" id="home">
+  <div class="home__data">
+    <p class="home__eyebrow">FRONT-END · CRO · EXPERIMENTATION</p>
+    <h1 class="home__title">Olá, eu sou<br><span class="home__title-color">Bruno Biancalana.</span><br><span class="home__role">Senior Front-End Developer</span></h1>
+    <p class="home__description">Desenvolvimento, experimentação e dados conectados para criar experiências digitais mensuráveis.</p>
+    <div class="home__actions"><a href="#work" class="button">Ver cases</a><a href="index_en.html" class="button button--ghost">English</a></div>
+  </div>
+  <div class="home__social">
+    <a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="home__social-icon" data-track="icon-menu-linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+    <a href="https://github.com/bruno-biancalana" target="_blank" rel="noopener noreferrer" class="home__social-icon" data-track="icon-menu-github" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+  </div>
+  <div class="home__img"><svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><mask id="mask0"><path d="M9.19 145.964C34.025 76.581 114.865 54.73 184.111 29.482C245.804 6.989 311.86-14.95 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.158 361.805C17.484 299.81-17.162 219.583 9.19 145.964Z"/></mask><g mask="url(#mask0)"><path d="M9.19 145.964C34.025 76.581 114.865 54.73 184.111 29.482C245.804 6.989 311.86-14.95 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.158 361.805C17.484 299.81-17.162 219.583 9.19 145.964Z"/><image class="home__blob-img" x="50" y="60" href="assets/img/novo logo.png"/></g></svg></div>
+</section>
+<section class="about section" id="about"><h2 class="section-title">Sobre</h2><div class="about__container bd-grid">
+  <div class="about__img"><img src="assets/img/sobre.png" alt="Bruno Biancalana" loading="lazy"></div>
+  <div><h2 class="about__subtitle">Engenharia, experimentação e dados.</h2>
+  <p class="about__text">Sou Senior Front-End Developer com atuação na interseção entre desenvolvimento de software, CRO, experimentação e dados. Trabalho com JavaScript em experiências digitais de produção, desenvolvendo testes A/B, personalizações e soluções para jornadas web com foco em performance, qualidade e resultados mensuráveis.<br><br>Minha atuação inclui Adobe Target e o ecossistema Adobe, SPAs, integrações, analytics e automação. Também contribuo com direcionamento técnico, code review, padronização de desenvolvimento e iniciativas multidisciplinares com times de diferentes países.<br><br>Sou formado em Ciência da Computação e concluí um MBA em Business Intelligence & Big Data em 2024. Minha trajetória também inclui formação técnica em Eletrônica e serviço como Cabo no Exército Brasileiro, experiências que fortaleceram minha disciplina, liderança e abordagem estruturada para problemas complexos.</p>
+  <div class="about__highlights"><span><strong>10+</strong> anos em desenvolvimento</span><span><strong>8+</strong> anos com JavaScript</span><span><strong>CRO</strong> & Experimentation</span><span><strong>Global</strong> collaboration</span></div></div>
+</div></section>
+<section class="skills section" id="skills"><h2 class="section-title">Expertise</h2><div class="expertise__grid bd-grid">
+  <article class="expertise__card"><i class="bx bx-code-alt"></i><h3>Front-End Engineering</h3><p>JavaScript · HTML · CSS · React · Next.js · SPAs · APIs · Performance</p></article>
+  <article class="expertise__card"><i class="bx bx-test-tube"></i><h3>CRO & Experimentation</h3><p>Adobe Target · A/B Testing · Personalization · Experimentation · Conversion Optimization</p></article>
+  <article class="expertise__card"><i class="bx bx-line-chart"></i><h3>Analytics & Data</h3><p>GA4 · GTM · Power BI · SQL · Data Analysis · Measurement</p></article>
+  <article class="expertise__card"><i class="bx bx-layer"></i><h3>Adobe & Workflow</h3><p>Adobe Target · AEM · Workfront · Automation · Digital Experience</p></article>
+  <article class="expertise__card"><i class="bx bx-group"></i><h3>Technical Leadership</h3><p>Code Review · Technical Guidance · TPO · Agile · International Collaboration</p></article>
+</div></section>
+<section class="work section" id="work"><h2 class="section-title">Selected Work</h2><p class="section-intro bd-grid">Uma seleção de frentes que representam melhor minha atuação atual. Os cases profissionais são descritos de forma anonimizada, preservando informações internas e confidenciais.</p><div class="cases__grid bd-grid">
+  <article class="case__card"><span class="case__tag">CRO · Adobe Target</span><h3>Experimentation & Personalization</h3><p>Desenvolvimento de testes A/B e experiências personalizadas em jornadas digitais de alta escala, conectando hipóteses de negócio, implementação front-end e mensuração.</p><div class="case__stack">JavaScript · Adobe Target · GA4/GTM · SPAs</div></article>
+  <article class="case__card"><span class="case__tag">Engineering · Performance</span><h3>Experimentation Development Framework</h3><p>Evolução de um framework interno para padronizar implementações de experimentação, reduzir falhas recorrentes e melhorar performance, manutenção e eficiência de desenvolvimento.</p><div class="case__stack">JavaScript · DOM · MutationObserver · Performance</div></article>
+  <article class="case__card"><span class="case__tag">Automation · Analytics</span><h3>Workflow & Analytics Automation</h3><p>Integração entre gestão de atividades, automação e analytics para aumentar visibilidade operacional, reduzir trabalho manual e transformar dados do fluxo em insights acionáveis.</p><div class="case__stack">Power Automate · Power BI · SharePoint · AI</div></article>
+</div>
+<div class="legacy bd-grid"><h3>Projetos públicos selecionados</h3><p>Alguns projetos anteriores continuam disponíveis como registro da minha evolução técnica.</p><div class="legacy__links">
+<a href="https://github.com/bruno-biancalana/condominio_v01.2" target="_blank" rel="noopener noreferrer">Sorteio de vagas <i class="bx bx-link-external"></i></a>
+<a href="https://github.com/bruno-biancalana/batflix" target="_blank" rel="noopener noreferrer">Batflix <i class="bx bx-link-external"></i></a>
+<a href="https://github.com/bruno-biancalana/cobra_kai" target="_blank" rel="noopener noreferrer">Cobra Kai <i class="bx bx-link-external"></i></a>
+</div></div></section>
+<div id="form-container" class="minimized" role="dialog" aria-labelledby="titulo_form"><button id="toggle-button" aria-label="Abrir formulário">+</button><div id="form-content"><h2 id="titulo_form">Contato</h2><form method="post"><div aria-hidden="true" style="position:absolute;left:-9999px"><label for="company">Empresa</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></div><div class="form-group"><label for="name">Nome:</label><input type="text" id="name" name="contact" required></div><div class="form-group"><label for="email">Email:</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="message">Mensagem:</label><textarea id="message" name="text" rows="5" required></textarea></div><button type="submit" id="submit-button">Enviar</button></form></div></div>
+</main>
+<footer class="footer"><p class="footer__title">Bruno Biancalana</p><p class="footer__position">Senior Front-End Developer · CRO & Experimentation</p><div class="footer__social"><a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a><a href="https://github.com/bruno-biancalana" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="GitHub"><i class="bx bxl-github"></i></a></div></footer>
+<script src="https://unpkg.com/scrollreveal"></script><script src="assets/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body></html>
