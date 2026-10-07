@@ -768,3 +768,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .contact-modal #submit-button{width:100%;margin:2px 0 0;padding:12px 18px;border:0;border-radius:9px;background:var(--first-color);color:#fff;font-family:inherit;font-weight:600;cursor:pointer}
 body.contact-modal-open{overflow:hidden}
 @media screen and (max-width:575px){.cta.section{padding-bottom:0}.cta__box{margin-left:1rem;margin-right:1rem}.contact-modal{align-items:flex-end;padding:0}.contact-modal__panel{width:100%;max-height:90vh;border-radius:1.2rem 1.2rem 0 0;padding:1.5rem}}
+
+/* V2.4 preview B — the CTA itself replaces the old floating contact control */
+.cta.section{position:sticky;bottom:0;z-index:900;padding:0 0 max(.75rem,env(safe-area-inset-bottom));pointer-events:none}
+.cta__box{pointer-events:auto;width:min(1200px,calc(100% - 2rem));margin:0 auto;border-radius:1rem;padding:1.1rem 1.4rem;box-shadow:0 -8px 32px rgba(6,17,35,.18)}
+.cta__copy{min-width:0}.cta__box .cta__eyebrow{display:none}.cta__box h2{font-size:1.2rem;margin:0 0 .2rem}.cta__box p{font-size:.82rem;line-height:1.4;margin:0;max-width:650px}
+.cta__actions{flex-wrap:nowrap;justify-content:flex-end}.cta__actions .button{white-space:nowrap;padding:.7rem 1rem}
+.footer{position:relative;z-index:901}
+@media screen and (min-width:768px){.cta__box{grid-template-columns:minmax(0,1fr) auto;padding:1.1rem 1.4rem}}
+@media screen and (max-width:575px){.cta.section{padding:0 .75rem max(.6rem,env(safe-area-inset-bottom))}.cta__box{width:100%;margin:0;padding:.85rem;border-radius:.9rem;gap:.7rem}.cta__box h2{font-size:1rem}.cta__box p{display:none}.cta__actions{width:100%;display:grid;grid-template-columns:.85fr 1.15fr;gap:.5rem}.cta__actions .button{justify-content:center;padding:.65rem .55rem;font-size:.78rem}}
