@@ -206,6 +206,7 @@ const openContactModal = (trigger) => {
     contactTrigger = trigger || document.activeElement;
     formContainer.classList.add('is-open');
     formContainer.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('contact-modal-open');
     document.body.classList.add('contact-modal-open');
     const firstField = document.getElementById('name');
     if (firstField) window.setTimeout(() => firstField.focus(), 50);
@@ -215,6 +216,7 @@ const closeContactModal = () => {
     if (!formContainer) return;
     formContainer.classList.remove('is-open');
     formContainer.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('contact-modal-open');
     document.body.classList.remove('contact-modal-open');
     if (contactTrigger && typeof contactTrigger.focus === 'function') contactTrigger.focus();
 };
