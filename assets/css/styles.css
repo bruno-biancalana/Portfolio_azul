@@ -747,3 +747,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .linkedin-embed{width:100%;min-width:0;overflow:hidden;border:1px solid #e5eaf0;border-radius:1rem;background:#fff;box-shadow:0 6px 24px rgba(14,36,49,.07)}
 .linkedin-embed iframe{display:block;width:100%;max-width:100%;border:0}
 @media screen and (min-width:900px){.linkedin-embeds__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== V2.4 — CONTACT CTA + MODAL ===== */
+.cta.section{padding-bottom:0}
+.cta__box{border-radius:1rem 1rem 0 0}
+.contact-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+.contact-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.contact-modal__backdrop{position:absolute;inset:0;background:rgba(6,17,35,.68);backdrop-filter:blur(5px)}
+.contact-modal__panel{position:relative;z-index:1;width:min(460px,100%);max-height:calc(100vh - 2rem);overflow:auto;padding:2rem;background:#fff;border-radius:1rem;box-shadow:0 24px 80px rgba(6,17,35,.35)}
+.contact-modal__eyebrow{display:block;color:var(--first-color);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.45rem}
+.contact-modal__panel #titulo_form{font-size:1.55rem;line-height:1.25;margin:0 3rem .35rem 0;padding:0;text-align:left}
+.contact-modal__intro{margin:0 2rem 1.4rem 0;color:#687789;font-size:.88rem;line-height:1.55}
+.contact-modal #toggle-button{position:absolute;top:1.25rem;right:1.25rem;width:38px;height:38px;margin:0;padding:0;border:0;border-radius:50%;background:#f1f5f9;color:var(--second-color);font-size:1.5rem;line-height:38px;cursor:pointer;box-shadow:none}
+.contact-modal form{display:flex;flex-direction:column;gap:14px}
+.contact-modal .form-group{display:flex;flex-direction:column;gap:6px}
+.contact-modal label{font-size:.78rem;font-weight:600;color:#52606d}
+.contact-modal input,.contact-modal textarea{width:100%;margin:0;padding:11px 13px;border:1px solid #d9e0e8;border-radius:9px;background:#f8fafc;font:inherit;font-size:.9rem;color:var(--second-color);outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.contact-modal input:focus,.contact-modal textarea:focus{background:#fff;border-color:var(--first-color);box-shadow:0 0 0 3px rgba(56,116,255,.12)}
+.contact-modal textarea{resize:vertical;min-height:110px}
+.contact-modal #submit-button{width:100%;margin:2px 0 0;padding:12px 18px;border:0;border-radius:9px;background:var(--first-color);color:#fff;font-family:inherit;font-weight:600;cursor:pointer}
+body.contact-modal-open{overflow:hidden}
+@media screen and (max-width:575px){.cta.section{padding-bottom:0}.cta__box{margin-left:1rem;margin-right:1rem}.contact-modal{align-items:flex-end;padding:0}.contact-modal__panel{width:100%;max-height:90vh;border-radius:1.2rem 1.2rem 0 0;padding:1.5rem}}
