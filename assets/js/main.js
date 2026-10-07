@@ -212,19 +212,46 @@ const openContactModal = (trigger) => {
     if (firstField) window.setTimeout(() => firstField.focus(), 50);
 };
 
-const closeContactModal = () => {
+const closeContactModal = (reason = 'dismiss') => {
     if (!formContainer) return;
+    const wasOpen = formContainer.classList.contains('is-open');
     formContainer.classList.remove('is-open');
     formContainer.setAttribute('aria-hidden', 'true');
     document.documentElement.classList.remove('contact-modal-open');
     document.body.classList.remove('contact-modal-open');
     if (contactTrigger && typeof contactTrigger.focus === 'function') contactTrigger.focus();
+    if (wasOpen && reason === 'dismiss') {
+        trackPortfolioEvent('contact_close', { status: 'dismissed' });
+    }
 };
 
 contactOpenButtons.forEach((button) => button.addEventListener('click', () => openContactModal(button)));
-contactCloseButtons.forEach((button) => button.addEventListener('click', closeContactModal));
+contactCloseButtons.forEach((button) => button.addEventListener('click', () => closeContactModal('dismiss')));
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && formContainer && formContainer.classList.contains('is-open')) closeContactModal();
+    if (!formContainer || !formContainer.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+        closeContactModal('dismiss');
+        return;
+    }
+
+    if (e.key === 'Tab') {
+        const focusable = [...formContainer.querySelectorAll(
+            'button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), a[href]'
+        )].filter((element) => element.offsetParent !== null);
+
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
 });
 
 // O navegador envia apenas para a função do próprio site. O endpoint externo
@@ -248,13 +275,15 @@ if (contactForm) {
         }
 
         try {
+            trackPortfolioEvent('contact_attempt');
             const formData = new FormData(contactForm);
             const response = await fetch(CONTACT_API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(formData.entries()))
             });
-									closeContactModal();
+            closeContactModal('feedback');
+
             if (response.ok) {
                 trackPortfolioEvent('contact_submit', { status: 'success' });
                 contactForm.reset();
@@ -277,17 +306,34 @@ if (contactForm) {
                 }
             } else {
                 const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.message || 'Erro na resposta do servidor.');
+                const requestError = new Error(errorData.message || 'Erro na resposta do servidor.');
+                requestError.status = response.status;
+                throw requestError;
             }
         } catch (error) {
-            trackPortfolioEvent('contact_submit', { status: 'error' });
+            const status = error.status || 0;
+            trackPortfolioEvent('contact_submit', { status: 'error', http_status: status || undefined });
             console.error('Form submission error:', error);
+
+            const isEnglish = document.documentElement.lang === 'en';
+            let errorText = isEnglish
+                ? 'Something went wrong while sending the message. Please try again.'
+                : 'Algo deu errado ao enviar a mensagem. Por favor, tente novamente.';
+
+            if (status === 429) {
+                errorText = isEnglish
+                    ? 'Too many attempts. Please wait a moment and try again.'
+                    : 'Muitas tentativas em pouco tempo. Aguarde um momento e tente novamente.';
+            } else if (status >= 500) {
+                errorText = isEnglish
+                    ? 'The contact service is temporarily unavailable. Please try again shortly.'
+                    : 'O serviço de contato está temporariamente indisponível. Tente novamente em instantes.';
+            }
+
             Swal.fire({
                 icon: 'error',
-                title: document.documentElement.lang === 'en' ? 'Oops...' : 'Ops...',
-                text: document.documentElement.lang === 'en'
-                    ? 'Something went wrong while sending the message. Please try again.'
-                    : 'Algo deu errado ao enviar a mensagem. Por favor, tente novamente.'
+                title: isEnglish ? 'Oops...' : 'Ops...',
+                text: errorText
             });
         } finally {
             if (submitButton) {
