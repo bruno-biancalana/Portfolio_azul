@@ -70,12 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (target.closest('#form-container')) {
                 category = 'Contact Form';
                 if (target.id === 'toggle-button') {
-                    label = 'btn-contact-toggle';
+                    label = 'btn-contact-close';
                 } else if (target.id === 'submit-button' || target.type === 'submit') {
                     label = 'btn-contact-submit';
                 } else {
                     label = 'btn-contact-form-click';
                 }
+            } else if (target.classList.contains('cta__contact')) {
+                category = 'Contact Form';
+                label = 'btn-contact-open';
             }
         }
 
@@ -191,26 +194,38 @@ sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
 
-/* Formulário responsivo */ 
-
+/* Modal de contato — campos e integração de envio preservados */
 const formContainer = document.getElementById('form-container');
 const toggleButton = document.getElementById('toggle-button');
+const contactOpenButtons = document.querySelectorAll('.cta__contact');
+const contactCloseButtons = document.querySelectorAll('[data-contact-close]');
+let contactTrigger = null;
 
-if (toggleButton && formContainer) {
-    toggleButton.addEventListener('click', () => {
-        formContainer.classList.toggle('minimized');
-        if (formContainer.classList.contains('minimized')) {
-            toggleButton.innerText = '+';
-            toggleButton.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Open contact form' : 'Abrir formulário');
-            toggleButton.setAttribute('aria-expanded', 'false');
-        } else {
-            toggleButton.innerText = '-';
-            toggleButton.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close contact form' : 'Fechar formulário');
-            toggleButton.setAttribute('aria-expanded', 'true');
-            trackPortfolioEvent('contact_open', { source: 'floating_button' });
-        }
-    });
-}
+const openContactModal = (trigger) => {
+    if (!formContainer) return;
+    contactTrigger = trigger || document.activeElement;
+    formContainer.classList.add('is-open');
+    formContainer.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('contact-modal-open');
+    document.body.classList.add('contact-modal-open');
+    const firstField = document.getElementById('name');
+    if (firstField) window.setTimeout(() => firstField.focus(), 50);
+};
+
+const closeContactModal = () => {
+    if (!formContainer) return;
+    formContainer.classList.remove('is-open');
+    formContainer.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('contact-modal-open');
+    document.body.classList.remove('contact-modal-open');
+    if (contactTrigger && typeof contactTrigger.focus === 'function') contactTrigger.focus();
+};
+
+contactOpenButtons.forEach((button) => button.addEventListener('click', () => openContactModal(button)));
+contactCloseButtons.forEach((button) => button.addEventListener('click', closeContactModal));
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && formContainer && formContainer.classList.contains('is-open')) closeContactModal();
+});
 
 // O navegador envia apenas para a função do próprio site. O endpoint externo
 // permanece em uma variável de ambiente no Netlify.
@@ -223,10 +238,10 @@ if (contactForm) {
 
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalBtnText = submitButton ? submitButton.innerText : 'Enviar';
-        
+
         if (submitButton) {
             submitButton.disabled = true;
             submitButton.innerText = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
@@ -239,9 +254,10 @@ if (contactForm) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(formData.entries()))
             });
-
+									closeContactModal();
             if (response.ok) {
                 trackPortfolioEvent('contact_submit', { status: 'success' });
+                contactForm.reset();
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
@@ -259,13 +275,6 @@ if (contactForm) {
                         timer: 3000
                     });
                 }
-                
-                contactForm.reset();
-                
-                if (formContainer) {
-                    formContainer.classList.add('minimized');
-                    if (toggleButton) toggleButton.innerText = '+';
-                }
             } else {
                 const errorData = await response.json().catch(() => ({}));
                 throw new Error(errorData.message || 'Erro na resposta do servidor.');
@@ -276,8 +285,8 @@ if (contactForm) {
             Swal.fire({
                 icon: 'error',
                 title: document.documentElement.lang === 'en' ? 'Oops...' : 'Ops...',
-                text: document.documentElement.lang === 'en' 
-                    ? 'Something went wrong while sending the message. Please try again.' 
+                text: document.documentElement.lang === 'en'
+                    ? 'Something went wrong while sending the message. Please try again.'
                     : 'Algo deu errado ao enviar a mensagem. Por favor, tente novamente.'
             });
         } finally {
@@ -288,7 +297,7 @@ if (contactForm) {
         }
     });
 }
-/* Formulário responsivo */ 
+ 
 
 
 
