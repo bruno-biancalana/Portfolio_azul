@@ -70,12 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (target.closest('#form-container')) {
                 category = 'Contact Form';
                 if (target.id === 'toggle-button') {
-                    label = 'btn-contact-toggle';
+                    label = 'btn-contact-close';
                 } else if (target.id === 'submit-button' || target.type === 'submit') {
                     label = 'btn-contact-submit';
                 } else {
                     label = 'btn-contact-form-click';
                 }
+            } else if (target.classList.contains('cta__contact')) {
+                category = 'Contact Form';
+                label = 'btn-contact-open';
             }
         }
 
