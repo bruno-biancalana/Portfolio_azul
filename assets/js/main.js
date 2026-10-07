@@ -257,6 +257,8 @@ if (contactForm) {
 
             if (response.ok) {
                 trackPortfolioEvent('contact_submit', { status: 'success' });
+                contactForm.reset();
+                closeContactModal();
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
@@ -274,9 +276,6 @@ if (contactForm) {
                         timer: 3000
                     });
                 }
-
-                contactForm.reset();
-                closeContactModal();
             } else {
                 const errorData = await response.json().catch(() => ({}));
                 throw new Error(errorData.message || 'Erro na resposta do servidor.');
