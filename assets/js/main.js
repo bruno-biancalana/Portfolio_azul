@@ -254,11 +254,10 @@ if (contactForm) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(formData.entries()))
             });
-
+									closeContactModal();
             if (response.ok) {
                 trackPortfolioEvent('contact_submit', { status: 'success' });
                 contactForm.reset();
-                closeContactModal();
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
                         position: 'top-center',
