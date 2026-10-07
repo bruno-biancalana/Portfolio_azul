@@ -5,8 +5,11 @@ const trackPortfolioEvent = (eventName, params = {}) => {
         page_path: window.location.pathname,
         ...params
     };
-    if (window.dataLayer) window.dataLayer.push({ event: eventName, ...payload });
-    if (typeof gtag === 'function') gtag('event', eventName, payload);
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, payload);
+    } else if (window.dataLayer) {
+        window.dataLayer.push({ event: eventName, ...payload });
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -96,42 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
             trackPortfolioEvent('github_click', { link_url: clickUrl });
         }
 
-        // 3. Disparo dos Eventos para o Google Tag Manager / GA4
-        if (window.dataLayer) {
-            // A: Evento Personalizado Rico (Recomendado para GTM)
-            window.dataLayer.push({
-                event: 'custom_click',
-                click_category: category,
-                click_label: label || 'unlabeled_click',
-                click_text: clickText || 'no_text',
-                click_url: clickUrl || 'no_url',
-                page_language: pageLang
-            });
+        // 3. Um único envio por evento. O gtag já utiliza o dataLayer internamente.
+        const clickPayload = {
+            click_category: category,
+            click_label: label || 'unlabeled_click',
+            click_text: clickText || 'no_text',
+            click_url: clickUrl || 'no_url',
+            page_language: pageLang
+        };
 
-            // B: Evento Legado (Garante retrocompatibilidade com tags antigas do GTM)
-            if (label) {
-                window.dataLayer.push({
-                    event: 'button_click',
-                    button_label: label
-                });
-            }
-        }
-
-        // C: Envio Direto via Gtag (Garante envio para o GA4 caso não use GTM)
         if (typeof gtag === 'function') {
-            gtag('event', 'custom_click', {
-                click_category: category,
-                click_label: label || 'unlabeled_click',
-                click_text: clickText || 'no_text',
-                click_url: clickUrl || 'no_url',
-                page_language: pageLang
-            });
-
-            if (label) {
-                gtag('event', 'button_click', {
-                    button_label: label
-                });
-            }
+            gtag('event', 'custom_click', clickPayload);
+            if (label) gtag('event', 'button_click', { button_label: label });
+        } else if (window.dataLayer) {
+            window.dataLayer.push({ event: 'custom_click', ...clickPayload });
+            if (label) window.dataLayer.push({ event: 'button_click', button_label: label });
         }
     });
 });
@@ -286,6 +268,7 @@ if (contactForm) {
 
             if (response.ok) {
                 trackPortfolioEvent('contact_submit', { status: 'success' });
+                trackPortfolioEvent('generate_lead', { lead_source: 'portfolio_contact_form' });
                 contactForm.reset();
                 if (document.documentElement.lang === 'en') {
                     Swal.fire({
