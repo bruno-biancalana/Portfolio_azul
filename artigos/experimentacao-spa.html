@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Bruno Biancalana">
+  <meta name="description" content="Entenda os desafios técnicos dos testes A/B em SPAs: DOM dinâmico, MutationObserver, execução idempotente, Adobe Target e mensuração.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bruno-biancalana-dev.netlify.app/artigos/experimentacao-spa.html">
+  <link rel="alternate" hreflang="pt-br" href="https://bruno-biancalana-dev.netlify.app/artigos/experimentacao-spa.html">
+  <link rel="alternate" hreflang="en" href="https://bruno-biancalana-dev.netlify.app/articles/spa-experimentation.html">
+  <link rel="alternate" hreflang="x-default" href="https://bruno-biancalana-dev.netlify.app/artigos/experimentacao-spa.html">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Testes A/B em SPAs: JavaScript, Adobe Target e performance | Bruno Biancalana">
+  <meta property="og:description" content="Entenda os desafios técnicos dos testes A/B em SPAs: DOM dinâmico, MutationObserver, execução idempotente, Adobe Target e mensuração.">
+  <meta property="og:url" content="https://bruno-biancalana-dev.netlify.app/artigos/experimentacao-spa.html">
+  <meta property="og:image" content="https://bruno-biancalana-dev.netlify.app/assets/img/novo%20logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Testes A/B em SPAs: JavaScript, Adobe Target e performance | Bruno Biancalana">
+  <meta name="twitter:description" content="Entenda os desafios técnicos dos testes A/B em SPAs: DOM dinâmico, MutationObserver, execução idempotente, Adobe Target e mensuração.">
+  <meta name="twitter:image" content="https://bruno-biancalana-dev.netlify.app/assets/img/novo%20logo.png">
+  <title>Testes A/B em SPAs: JavaScript, Adobe Target e performance | Bruno Biancalana</title>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Testes A/B em SPAs: JavaScript, Adobe Target e performance","description":"Entenda os desafios técnicos dos testes A/B em SPAs: DOM dinâmico, MutationObserver, execução idempotente, Adobe Target e mensuração.","inLanguage":"pt-BR","author":{"@type":"Person","name":"Bruno Biancalana","url":"https://bruno-biancalana-dev.netlify.app/"},"publisher":{"@type":"Person","name":"Bruno Biancalana"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://bruno-biancalana-dev.netlify.app/artigos/experimentacao-spa.html"},"datePublished":"2026-10-14","dateModified":"2026-10-14"}</script>
+</head>
+<body class="article-page">
+  <header class="article-header"><div class="article-shell article-header__inner"><a href="../index.html" class="article-brand">Bruno Biancalana</a><nav aria-label="Navegação do artigo"><a href="../index.html#work">Portfólio</a><a href="../articles/spa-experimentation.html" hreflang="en">English</a></nav></div></header>
+  <main class="article-shell">
+    <article class="technical-article">
+      <p class="article-kicker">JAVASCRIPT · ADOBE TARGET · CRO</p>
+      <h1>Testes A/B em SPAs: JavaScript, Adobe Target e performance</h1>
+      <p class="article-byline">Por Bruno Biancalana · 14/10/2026 · Artigo técnico</p>
+      
+<p class="article-lead">Aplicações SPA (Single-Page Applications) podem mudar de tela sem recarregar o documento. Para testes A/B e personalização, isso cria um desafio: a experiência precisa aparecer no momento certo, no contexto correto e sem prejudicar a página.</p>
+<h2 id="why">Por que SPAs exigem atenção especial</h2>
+<p>Em uma navegação tradicional, um experimento costuma executar após o carregamento da página. Em uma SPA, a navegação pelo cliente pode substituir componentes, atualizar rotas ou renderizar elementos de forma assíncrona. Um seletor disponível agora pode desaparecer na próxima tela; outro elemento pode ainda não existir.</p>
+<p>Isso também importa ao trabalhar com ferramentas como Adobe Target: configurar públicos e experiências é apenas parte do processo. A implementação Front-End precisa respeitar o ciclo de renderização da aplicação.</p>
+<h2 id="principles">Cinco práticas para experimentos mais confiáveis</h2>
+<ol>
+<li><strong>Defina uma condição clara de ativação.</strong> Verifique rota, contexto e elemento-alvo antes de aplicar alterações.</li>
+<li><strong>Garanta execução idempotente.</strong> Reexecutar o experimento não deve duplicar banners, listeners ou modificações visuais.</li>
+<li><strong>Observe o DOM somente quando necessário.</strong> Um <code>MutationObserver</code> pode ajudar com elementos assíncronos, mas deve ser desconectado quando encontrar o alvo ou quando deixar de ser relevante.</li>
+<li><strong>Considere transições de rota.</strong> Defina como o experimento deve reagir a mudanças de tela sem recarregamento, incluindo a limpeza de alterações temporárias.</li>
+<li><strong>Evite eventos duplicados.</strong> Diferencie exposição, interação e conversão, validando as condições de disparo de cada evento.</li>
+</ol>
+<h2 id="example">Exemplo simplificado em JavaScript</h2>
+<p>O trecho abaixo é didático e independente de framework. Não foi extraído de projetos corporativos. Ele aguarda um elemento e aplica uma alteração apenas uma vez. Em produção, também seria necessário tratar mudanças de rota, limpeza e elegibilidade do experimento.</p>
+<pre><code>function applyOnce(element) {
+  if (element.dataset.experimentApplied === 'true') return;
+  element.dataset.experimentApplied = 'true';
+  element.classList.add('experiment-variant');
+}
+function waitForTarget(selector, timeoutMs = 5000) {
+  const existing = document.querySelector(selector);
+  if (existing) { applyOnce(existing); return; }
+
+  const observer = new MutationObserver(() =&gt; {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    applyOnce(element);
+    observer.disconnect();
+    clearTimeout(timeout);
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  const timeout = setTimeout(() =&gt; observer.disconnect(), timeoutMs);
+}
+waitForTarget('[data-experiment-target]');</code></pre>
+<h2 id="measurement">Performance, acessibilidade e mensuração</h2>
+<p>Mesmo uma variante exibida corretamente pode comprometer a experiência se causar mudanças bruscas de layout, bloquear interações ou produzir dados inconsistentes. Valide o comportamento em desktop e mobile, considere a navegação por teclado e acompanhe indicadores de performance junto das métricas de conversão.</p>
+<p>Na mensuração, defina o que caracteriza uma exposição antes de implementar. Padronize nomes de eventos e confira no GA4/GTM possíveis contagens duplicadas, especialmente durante a navegação SPA.</p>
+<h2 id="takeaways">O principal aprendizado</h2>
+<p>Experimentação confiável não é apenas trocar textos ou cores. Ela depende de compreender estado da aplicação, renderização assíncrona, ciclo de vida, observabilidade e experiência do usuário. Esses princípios valem para diferentes plataformas, incluindo Adobe Target.</p>
+<p class="article-note">Este artigo apresenta boas práticas gerais e código ilustrativo. Não divulga implementações proprietárias, dados de clientes ou resultados internos.</p>
+      <div class="article-end"><a href="../index.html#work">← Voltar aos cases</a><a href="https://www.linkedin.com/in/bruno-biancalana/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+    </article>
+  </main>
+  <footer class="article-footer">© 2026 Bruno Biancalana · Senior Front-End Developer</footer>
+</body>
+</html>
