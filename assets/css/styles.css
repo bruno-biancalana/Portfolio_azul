@@ -717,3 +717,18 @@ html.contact-modal-open,body.contact-modal-open{overflow:hidden!important;oversc
 .article-end a{color:var(--first-color);font-weight:600}
 .article-footer{text-align:center;padding:1.5rem 1rem;background:#fff;color:#52606d;font-size:.85rem}
 @media(max-width:575px){.article-header__inner{align-items:flex-start;flex-direction:column;padding:1rem 0;gap:.4rem}.technical-article{padding:2rem 0 3rem}}
+
+/* V3.2 — technical article reading experience */
+.article-page{scroll-behavior:smooth}
+.article-page .technical-article h2[id]{scroll-margin-top:1.5rem}
+.article-toc{background:#fff;border:1px solid #dce4ed;border-radius:.85rem;padding:1.25rem 1.5rem;margin:2rem 0}
+.technical-article .article-toc__title{font-size:1rem;line-height:1.4;margin:0 0 .75rem}
+.article-toc ol{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.75rem;row-gap:.2rem}
+.article-toc li{margin:0}
+.article-toc a{color:#235b98;text-decoration:underline;text-underline-offset:3px}
+.article-toc a:hover{text-decoration-thickness:2px}
+.article-code-heading{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;font-size:.8rem;font-weight:600;color:#42536a;margin:1.5rem 0 -.85rem}
+.article-code-heading+pre{margin-top:1rem}
+.article-page a:focus-visible,.technical-article pre:focus-visible{outline:3px solid #2464aa;outline-offset:3px}
+@media(max-width:575px){.article-toc{padding:1rem 1.2rem}.article-toc ol{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.article-page{scroll-behavior:auto}}
