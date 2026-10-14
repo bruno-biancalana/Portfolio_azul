@@ -33,6 +33,7 @@
       <p class="article-byline">Por Bruno Biancalana · 14/10/2026 · Artigo técnico</p>
       
 <p class="article-lead">Aplicações SPA (Single-Page Applications) podem mudar de tela sem recarregar o documento. Para testes A/B e personalização, isso cria um desafio: a experiência precisa aparecer no momento certo, no contexto correto e sem prejudicar a página.</p>
+<nav class="article-toc" aria-label="Nesta página"><h2 class="article-toc__title">Neste artigo</h2><ol><li><a href="#why">Por que SPAs exigem atenção especial</a></li><li><a href="#principles">Cinco práticas de engenharia</a></li><li><a href="#example">Exemplo em JavaScript</a></li><li><a href="#measurement">Performance e mensuração</a></li><li><a href="#takeaways">Principal aprendizado</a></li></ol></nav>
 <h2 id="why">Por que SPAs exigem atenção especial</h2>
 <p>Em uma navegação tradicional, um experimento costuma executar após o carregamento da página. Em uma SPA, a navegação pelo cliente pode substituir componentes, atualizar rotas ou renderizar elementos de forma assíncrona. Um seletor disponível agora pode desaparecer na próxima tela; outro elemento pode ainda não existir.</p>
 <p>Isso também importa ao trabalhar com ferramentas como Adobe Target: configurar públicos e experiências é apenas parte do processo. A implementação Front-End precisa respeitar o ciclo de renderização da aplicação.</p>
@@ -46,7 +47,8 @@
 </ol>
 <h2 id="example">Exemplo simplificado em JavaScript</h2>
 <p>O trecho abaixo é didático e independente de framework. Não foi extraído de projetos corporativos. Ele aguarda um elemento e aplica uma alteração apenas uma vez. Em produção, também seria necessário tratar mudanças de rota, limpeza e elegibilidade do experimento.</p>
-<pre><code>function applyOnce(element) {
+<div class="article-code-heading"><span>Exemplo ilustrativo · JavaScript</span><span>Não é código de produção</span></div>
+<pre tabindex="0" aria-label="Exemplo de código JavaScript"><code>function applyOnce(element) {
   if (element.dataset.experimentApplied === 'true') return;
   element.dataset.experimentApplied = 'true';
   element.classList.add('experiment-variant');
