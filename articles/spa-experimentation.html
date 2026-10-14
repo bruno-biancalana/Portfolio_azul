@@ -33,6 +33,7 @@
       <p class="article-byline">By Bruno Biancalana · 14/10/2026 · Technical article</p>
       
 <p class="article-lead">Single-page applications can change views without reloading the document. For A/B testing and personalization, that creates a practical challenge: an experience must appear at the right time, only where it belongs, without harming the page.</p>
+<nav class="article-toc" aria-label="On this page"><h2 class="article-toc__title">On this page</h2><ol><li><a href="#why">Why SPAs need a different approach</a></li><li><a href="#principles">Five engineering practices</a></li><li><a href="#example">JavaScript example</a></li><li><a href="#measurement">Performance and measurement</a></li><li><a href="#takeaways">Key takeaways</a></li></ol></nav>
 <h2 id="why">Why SPAs change the experimentation lifecycle</h2>
 <p>In a traditional page load, an experiment often runs after a document is ready. In an SPA, client-side navigation can replace components, update routes, or render elements asynchronously. A selector that exists now may disappear on the next view, while a new target may not exist yet.</p>
 <p>This matters when using tools such as Adobe Target: audience and experience configuration are only part of the work. The front-end implementation also needs to respect the application's rendering lifecycle.</p>
@@ -46,7 +47,8 @@
 </ol>
 <h2 id="example">A simplified, framework-independent example</h2>
 <p>The following is an illustrative pattern, not code from an employer or a production implementation. It waits for a target element and applies a change only once. A real implementation should also handle route changes, cleanup and experiment eligibility.</p>
-<pre><code>function applyOnce(element) {
+<div class="article-code-heading"><span>Illustrative example · JavaScript</span><span>Not production-ready</span></div>
+<pre tabindex="0" aria-label="JavaScript code example"><code>function applyOnce(element) {
   if (element.dataset.experimentApplied === 'true') return;
   element.dataset.experimentApplied = 'true';
   element.classList.add('experiment-variant');
