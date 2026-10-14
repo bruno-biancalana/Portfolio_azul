@@ -691,3 +691,29 @@ html.contact-modal-open,body.contact-modal-open{overflow:hidden!important;oversc
     scroll-snap-stop:always;
   }
 }
+
+/* Technical article pages — isolated from the portfolio layout */
+.case__article-link{display:inline-block;margin-top:1rem;font-size:.9rem;font-weight:600;color:var(--first-color);text-decoration:underline;text-underline-offset:3px}
+.article-page{margin:0;background:#f7f9fc;color:#18263a;line-height:1.7}
+.article-page .article-shell{width:min(100% - 2rem,840px);margin-inline:auto}
+.article-header{background:#fff;border-bottom:1px solid #e5eaf0}
+.article-header__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px}
+.article-header a{color:#172744;font-weight:600}
+.article-header nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+.article-brand{font-size:1.05rem}
+.technical-article{padding:3.5rem 0 4rem}
+.technical-article h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;margin:.5rem 0 1rem}
+.technical-article h2{font-size:1.45rem;line-height:1.35;margin:2.5rem 0 .75rem}
+.technical-article p{margin:0 0 1.2rem}
+.technical-article ol{padding-left:1.5rem;margin:0 0 1.5rem}
+.technical-article li{margin-bottom:.7rem}
+.article-kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;color:var(--first-color)}
+.article-byline{color:#52606d;font-size:.88rem;margin-bottom:2rem!important}
+.article-lead{font-size:1.1rem}
+.technical-article code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em}
+.technical-article pre{overflow-x:auto;padding:1.25rem;border-radius:.75rem;background:#12243a;color:#f0f5ff;line-height:1.6;margin:1.5rem 0}
+.article-note{padding:1rem;border-left:3px solid var(--first-color);background:#fff;font-size:.9rem}
+.article-end{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid #dce2e8;padding-top:1.5rem;margin-top:2.5rem}
+.article-end a{color:var(--first-color);font-weight:600}
+.article-footer{text-align:center;padding:1.5rem 1rem;background:#fff;color:#52606d;font-size:.85rem}
+@media(max-width:575px){.article-header__inner{align-items:flex-start;flex-direction:column;padding:1rem 0;gap:.4rem}.technical-article{padding:2rem 0 3rem}}
